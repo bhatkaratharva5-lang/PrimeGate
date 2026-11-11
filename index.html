@@ -31,7 +31,6 @@
       padding-bottom: 90px;
     }
 
-    /* iOS LIQUID GLASS TOP BAR */
     .top-bar {
       position: sticky;
       top: 0;
@@ -62,10 +61,8 @@
       cursor: pointer;
     }
 
-    /* APP CONTAINER */
     .app-wrap { padding: 18px 16px; }
 
-    /* iOS LIQUID CARDS */
     .glass-card {
       background: var(--ios-glass-card);
       border: 1px solid var(--ios-glass-border);
@@ -77,7 +74,6 @@
       margin-bottom: 16px;
     }
 
-    /* METRICS STRIP */
     .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
     .metric-pill {
       background: rgba(18, 24, 43, 0.55);
@@ -90,11 +86,9 @@
     .metric-val { font-size: 20px; font-weight: 800; margin-top: 3px; color: #fff; }
     .metric-sub { font-size: 11px; color: var(--emerald); font-weight: 600; margin-top: 2px; }
 
-    /* HEADERS */
     h2.tab-h { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
     p.tab-p { font-size: 12px; color: var(--text-sub); margin-bottom: 16px; line-height: 1.4; }
 
-    /* A-ADS EMBED BOX */
     .ad-container {
       width: 100%;
       background: rgba(0, 0, 0, 0.35);
@@ -108,7 +102,6 @@
       min-height: 90px;
     }
 
-    /* INPUTS */
     input, textarea {
       width: 100%;
       background: rgba(8, 12, 22, 0.65);
@@ -123,7 +116,6 @@
     }
     input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
 
-    /* BUTTONS */
     .ios-btn {
       width: 100%;
       padding: 14px;
@@ -138,7 +130,6 @@
     }
     .ios-btn:active { transform: scale(0.98); }
 
-    /* SECRET BLOCK */
     .secret-box {
       background: rgba(0,0,0,0.45);
       border: 1px dashed rgba(99, 102, 241, 0.4);
@@ -151,7 +142,6 @@
       margin-bottom: 12px;
     }
 
-    /* CODE BLOCKS */
     pre {
       background: rgba(0,0,0,0.5);
       border: 1px solid var(--ios-glass-border);
@@ -165,12 +155,10 @@
       line-height: 1.5;
     }
 
-    /* VIEWS */
     .view-tab { display: none; }
     .view-tab.active { display: block; animation: sheetUp 0.22s ease-out; }
     @keyframes sheetUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* iOS BOTTOM NAVIGATION DOCK */
     .bottom-dock {
       position: fixed;
       bottom: 12px;
@@ -203,7 +191,6 @@
     .dock-btn.active { color: var(--cyan); }
     .dock-btn span.icon { font-size: 17px; }
 
-    /* iOS GLASS SLIDE-OVER DRAWER */
     .drawer-overlay {
       position: fixed;
       inset: 0;
@@ -248,12 +235,10 @@
       margin-bottom: 7px;
       cursor: pointer;
     }
-    .drawer-item:active { background: var(--accent); }
   </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <header class="top-bar">
     <div class="brand">PrimeGate <span>PRO</span></div>
     <button class="menu-trigger" onclick="openDrawer()">☰ All Tools</button>
@@ -261,31 +246,28 @@
 
   <div class="app-wrap">
 
-    <!-- FLOATING LIVE STATS -->
     <div class="metric-grid">
       <div class="metric-pill">
-        <div class="metric-lbl">Current Rate</div>
+        <div class="metric-lbl">Target Rate</div>
         <div class="metric-val">₹500</div>
-        <div class="metric-sub">$6 Global CPM</div>
+        <div class="metric-sub">30 Views/User</div>
       </div>
       <div class="metric-pill">
         <div class="metric-lbl">Min Payout</div>
         <div class="metric-val">$0.00</div>
-        <div class="metric-sub">FaucetPay Auto</div>
+        <div class="metric-sub">FaucetPay Direct</div>
       </div>
     </div>
 
-    <!-- 1. DEFAULT OPEN TAB: OVERVIEW & DASHBOARD -->
+    <!-- 1. DASHBOARD -->
     <section id="view-overview" class="view-tab active">
       <div class="glass-card">
         <h2 class="tab-h">Publisher Dashboard</h2>
         <p class="tab-p">Live earnings and verified visits across your links.</p>
 
-        <!-- AADS AD UNIT 2461720 EMBED FOR VERIFICATION -->
+        <!-- A-ADS Unit 2461720 -->
         <div class="ad-container">
-          <div id="frame" style="width: 100%; margin: auto; position: relative;">
-            <iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0; padding:0; width:100%; height:auto; overflow:hidden; display:block; margin:auto'></iframe>
-          </div>
+          <iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0; padding:0; width:100%; height:auto; overflow:hidden; display:block; margin:auto'></iframe>
         </div>
 
         <div style="background:rgba(0,0,0,0.3); border:1px solid var(--ios-glass-border); padding:16px; border-radius:16px; margin-bottom:12px;">
@@ -306,159 +288,109 @@
     <section id="view-quick" class="view-tab">
       <div class="glass-card">
         <h2 class="tab-h">Instant Link Generator</h2>
-        <p class="tab-p">Create a monetized 3-step verification link on mobile.</p>
-        <input type="text" id="quickDest" placeholder="Paste target URL...">
-        <input type="text" id="quickSlug" placeholder="File code (e.g. file9x7)">
+        <p class="tab-p">Create a monetized 6-step verification link for Telegram users.</p>
+        <input type="text" id="quickDest" placeholder="File token/code (e.g. file9x7)">
         <button class="ios-btn" onclick="genLink()">Generate High-CPM Link ➔</button>
 
         <div id="quickBox" style="display:none; margin-top:14px; padding:12px; background:rgba(16,185,129,0.12); border:1px solid var(--emerald); border-radius:14px; font-family:'JetBrains Mono'; font-size:12px; word-break:break-all; color:#34d399;"></div>
       </div>
     </section>
 
-    <!-- 3. DEVELOPER REST API -->
+    <!-- 3. REST API -->
     <section id="view-api" class="view-tab">
       <div class="glass-card">
         <h2 class="tab-h">Developer REST API</h2>
-        <p class="tab-p">Automate link shortening from your Telegram bots and apps.</p>
+        <p class="tab-p">Automate link creation inside Python / TeleBotHost.</p>
 
-        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">YOUR API SECRET KEY</div>
+        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">API SECRET KEY</div>
         <div class="secret-box" id="tokenDisplay">28e663a3d60714d93beafb02f92856187bae54ab</div>
         <button class="ios-btn" style="padding:10px; font-size:12px; margin-bottom:16px;" onclick="copyToken()">Copy Secret Key</button>
 
-        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">GET ENDPOINT STRUCTURE</div>
-        <pre>https://primegate.pages.dev/api?api=28e663a3d60714d93beafb02f92856187bae54ab&url=https://destination.com</pre>
-
-        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">JSON OUTPUT</div>
-        <pre>{
-  "status": "success",
-  "shortenedUrl": "https://primegate.pages.dev/step1.html?code=a1b2c3&u=8644980176"
-}</pre>
+        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">ENDPOINT STRUCTURE</div>
+        <pre>https://primegate.pages.dev/api?token=FILE_101&u=8644980176</pre>
       </div>
     </section>
 
     <!-- 4. MASS SHRINKER -->
     <section id="view-mass" class="view-tab">
       <div class="glass-card">
-        <h2 class="tab-h">Mass Shrinker</h2>
-        <p class="tab-p">Paste multiple URLs (one per line) to monetize in batch.</p>
-        <textarea id="massInput" rows="5" placeholder="https://example.com/file1&#10;https://example.com/file2"></textarea>
-        <button class="ios-btn" onclick="runMass()">Batch Compress ➔</button>
+        <h2 class="tab-h">Mass Link Generator</h2>
+        <p class="tab-p">Generate multiple file verification links at once.</p>
+        <textarea id="massInput" rows="5" placeholder="file101&#10;file102&#10;file103"></textarea>
+        <button class="ios-btn" onclick="runMass()">Batch Generate ➔</button>
         <textarea id="massOutput" rows="5" style="display:none; margin-top:12px;" readonly></textarea>
       </div>
     </section>
 
-    <!-- 5. WITHDRAW ($1 MINIMUM) -->
+    <!-- 5. WITHDRAW -->
     <section id="view-withdraw" class="view-tab">
       <div class="glass-card">
         <h2 class="tab-h">Withdraw Funds</h2>
-        <p class="tab-p">Direct settlement via UPI ID or Polygon USDT ($1.00 / ₹85.00 min).</p>
-        <input type="text" id="payDest" placeholder="UPI ID (e.g. name@upi) or USDT address">
+        <p class="tab-p">Direct settlement via UPI ID or FaucetPay USDT ($1.00 / ₹85.00 min).</p>
+        <input type="text" id="payDest" placeholder="UPI ID or FaucetPay Address">
         <input type="number" id="payAmt" value="85" min="85">
         <button class="ios-btn" onclick="cashout()">Submit Cashout ➔</button>
       </div>
     </section>
 
-    <!-- 6. REDIRECT /st & FULL PAGE SCRIPT -->
+    <!-- 6. REDIRECT TOOLS -->
     <section id="view-tools" class="view-tab">
       <div class="glass-card">
-        <h2 class="tab-h">Quick HTML Redirect (`/st`)</h2>
-        <p class="tab-p">No JSON required. Put directly inside download buttons.</p>
-        <pre>&lt;a href="https://primegate.pages.dev/step1.html?dest=https://google.com&u=8644980176"&gt;Download&lt;/a&gt;</pre>
-      </div>
-      <div class="glass-card">
-        <h2 class="tab-h">Full Page Script</h2>
-        <p class="tab-p">Automatically shortens all outbound website links.</p>
-        <pre>&lt;script&gt;
-var token = '28e663a3d60714d93beafb02f92856187bae54ab';
-var domains = ['mega.nz', 't.me'];
-&lt;/script&gt;</pre>
+        <h2 class="tab-h">Quick Direct Link</h2>
+        <p class="tab-p">Paste this format directly in Telegram inline buttons:</p>
+        <pre>https://primegate.pages.dev/step1.html?code=FILE_101&u=8644980176</pre>
       </div>
     </section>
 
   </div>
 
-  <!-- iOS BOTTOM DOCK -->
+  <!-- BOTTOM DOCK -->
   <nav class="bottom-dock">
-    <button class="dock-btn active" id="btn-dock-overview" onclick="showTab('overview')">
-      <span class="icon">📊</span>
-      <span>Overview</span>
-    </button>
-    <button class="dock-btn" id="btn-dock-quick" onclick="showTab('quick')">
-      <span class="icon">⚡</span>
-      <span>Quick Link</span>
-    </button>
-    <button class="dock-btn" id="btn-dock-api" onclick="showTab('api')">
-      <span class="icon">🔌</span>
-      <span>API</span>
-    </button>
-    <button class="dock-btn" id="btn-dock-withdraw" onclick="showTab('withdraw')">
-      <span class="icon">💸</span>
-      <span>Withdraw</span>
-    </button>
+    <button class="dock-btn active" id="btn-dock-overview" onclick="showTab('overview')"><span class="icon">📊</span><span>Overview</span></button>
+    <button class="dock-btn" id="btn-dock-quick" onclick="showTab('quick')"><span class="icon">⚡</span><span>Quick Link</span></button>
+    <button class="dock-btn" id="btn-dock-api" onclick="showTab('api')"><span class="icon">🔌</span><span>API</span></button>
+    <button class="dock-btn" id="btn-dock-withdraw" onclick="showTab('withdraw')"><span class="icon">💸</span><span>Withdraw</span></button>
   </nav>
 
-  <!-- iOS SLIDE-OVER DRAWER -->
+  <!-- DRAWER -->
   <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
   <div class="drawer" id="drawer">
     <div class="drawer-handle"></div>
     <div style="font-size:16px; font-weight:800; margin-bottom:12px;">PrimeGate PRO Navigation</div>
-
     <div class="drawer-label">Core Suite</div>
     <div class="drawer-item" onclick="selectFromDrawer('overview')">📊 Overview & Dashboard <span>➔</span></div>
-    <div class="drawer-item" onclick="selectFromDrawer('quick')">⚡ Quick Shrinker <span>➔</span></div>
+    <div class="drawer-item" onclick="selectFromDrawer('quick')">⚡ Quick Generator <span>➔</span></div>
     <div class="drawer-item" onclick="selectFromDrawer('withdraw')">💸 Withdraw ($1 / ₹85) <span>➔</span></div>
-
     <div class="drawer-label">Developer Tools</div>
     <div class="drawer-item" onclick="selectFromDrawer('api')">🔌 Developer REST API <span>➔</span></div>
-    <div class="drawer-item" onclick="selectFromDrawer('mass')">📦 Mass URL Shrinker <span>➔</span></div>
-    <div class="drawer-item" onclick="selectFromDrawer('tools')">🚀 Quick Redirect & FPS <span>➔</span></div>
-
+    <div class="drawer-item" onclick="selectFromDrawer('mass')">📦 Mass Generator <span>➔</span></div>
+    <div class="drawer-item" onclick="selectFromDrawer('tools')">🚀 Direct Links <span>➔</span></div>
     <div class="drawer-label">Telegram Sync</div>
-    <a href="https://t.me/FILE_STOREB_BOT" target="_blank" style="text-decoration:none;" class="drawer-item" onclick="closeDrawer()">
-      🤖 Open Telegram Bot <span>↗</span>
-    </a>
+    <a href="https://t.me/FILE_STOREB_BOT" target="_blank" style="text-decoration:none;" class="drawer-item" onclick="closeDrawer()">🤖 Open Telegram Bot <span>↗</span></a>
   </div>
 
   <script>
     function showTab(tabId) {
       document.querySelectorAll('.view-tab').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
-
       const activeView = document.getElementById('view-' + tabId);
       if (activeView) activeView.classList.add('active');
-
       const dockBtn = document.getElementById('btn-dock-' + tabId);
       if (dockBtn) dockBtn.classList.add('active');
-
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function openDrawer() {
-      document.getElementById('drawer').classList.add('open');
-      document.getElementById('overlay').classList.add('open');
-    }
-
-    function closeDrawer() {
-      document.getElementById('drawer').classList.remove('open');
-      document.getElementById('overlay').classList.remove('open');
-    }
-
-    function selectFromDrawer(tabId) {
-      closeDrawer();
-      setTimeout(() => {
-        showTab(tabId);
-      }, 150);
-    }
+    function openDrawer() { document.getElementById('drawer').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+    function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+    function selectFromDrawer(tabId) { closeDrawer(); setTimeout(() => { showTab(tabId); }, 150); }
 
     function copyToken() {
       const t = document.getElementById('tokenDisplay').innerText;
-      navigator.clipboard.writeText(t).then(() => alert("Secret copied to clipboard!"));
+      navigator.clipboard.writeText(t).then(() => alert("Secret copied!"));
     }
 
     function genLink() {
-      const dest = document.getElementById('quickDest').value.trim();
-      const code = document.getElementById('quickSlug').value.trim() || ("file" + Math.random().toString(36).substring(2, 7));
-      if (!dest) return alert("Enter target URL!");
+      const code = document.getElementById('quickDest').value.trim() || ("file" + Math.random().toString(36).substring(2, 7));
       const url = `${window.location.origin}/step1.html?code=${encodeURIComponent(code)}&u=8644980176`;
       const box = document.getElementById('quickBox');
       box.innerText = url;
@@ -467,11 +399,8 @@ var domains = ['mega.nz', 't.me'];
 
     function runMass() {
       const txt = document.getElementById('massInput').value.trim();
-      if (!txt) return alert("Enter URLs!");
-      const res = txt.split('\n').filter(Boolean).map(() => {
-        const c = "file" + Math.random().toString(36).substring(2, 7);
-        return `${window.location.origin}/step1.html?code=${c}&u=8644980176`;
-      });
+      if (!txt) return alert("Enter codes!");
+      const res = txt.split('\n').filter(Boolean).map(line => `${window.location.origin}/step1.html?code=${encodeURIComponent(line.trim())}&u=8644980176`);
       const out = document.getElementById('massOutput');
       out.value = res.join('\n');
       out.style.display = 'block';
