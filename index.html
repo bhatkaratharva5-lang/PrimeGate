@@ -2,476 +2,470 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="monetag" content="0b86465c7516ac5d48547ea068513637">
-  <title>PrimeGate PRO | Advanced Shortener & Developer Suite</title>
+  <title>PrimeGate PRO | Mobile Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #06080e;
-      --bg-surface: #0c101a;
-      --bg-card: rgba(16, 22, 36, 0.75);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(99, 102, 241, 0.5);
+      --ios-glass: rgba(22, 27, 46, 0.55);
+      --ios-glass-card: rgba(30, 38, 64, 0.45);
+      --ios-glass-border: rgba(255, 255, 255, 0.12);
+      --ios-specular: rgba(255, 255, 255, 0.22);
+      --ios-blur: blur(28px);
       --accent: #6366f1;
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --accent-hover: #4f46e5;
-      --cyan: #38bdf8;
+      --accent-glow: rgba(99, 102, 241, 0.35);
       --emerald: #10b981;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --sidebar-w: 260px;
+      --cyan: #38bdf8;
+      --text: #ffffff;
+      --text-sub: #94a3b8;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg-base); color: var(--text-main); min-height: 100vh; display: flex; overflow-x: hidden; }
 
-    aside {
-      width: var(--sidebar-w); background: var(--bg-surface); border-right: 1px solid var(--border);
-      padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; left: 0;
-      z-index: 100; transition: transform 0.3s ease;
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #070913 55%, #020408 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 90px;
     }
-    .brand-box { display: flex; align-items: center; justify-content: space-between; padding: 0 8px 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
-    .brand-name { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: #fff; display: flex; align-items: center; gap: 8px; }
-    .brand-name span { color: var(--accent); }
-    .badge-pro { background: linear-gradient(135deg, #6366f1, #a855f7); font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 6px; letter-spacing: 0.5px; }
 
-    .nav-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #475569; padding: 12px 10px 6px; letter-spacing: 0.8px; }
-    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-    .nav-btn {
-      width: 100%; text-align: left; padding: 10px 14px; background: transparent; border: none; border-radius: 10px;
-      color: var(--text-muted); font-size: 13.5px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s;
+    /* iOS LIQUID GLASS TOP BAR */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      padding: 14px 18px;
+      background: rgba(10, 14, 26, 0.65);
+      backdrop-filter: var(--ios-blur);
+      -webkit-backdrop-filter: var(--ios-blur);
+      border-bottom: 1px solid var(--ios-glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .nav-btn:hover { background: rgba(255,255,255,0.04); color: #fff; }
-    .nav-btn.active { background: var(--accent); color: #fff; box-shadow: 0 4px 14px var(--accent-glow); }
-
-    .user-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-    .user-info { display: flex; align-items: center; gap: 10px; }
-    .user-avatar { width: 34px; height: 34px; border-radius: 9px; background: #1e293b; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--cyan); border: 1px solid var(--border); }
-    .user-meta h4 { font-size: 13px; font-weight: 700; }
-    .user-meta p { font-size: 11px; color: var(--emerald); font-weight: 600; }
-
-    main { margin-left: var(--sidebar-w); flex: 1; padding: 32px 36px; min-height: 100vh; background: radial-gradient(circle at 80% 10%, rgba(99,102,241,0.06), transparent 50%); }
-    .top-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
-    .header-title h1 { font-size: 24px; font-weight: 800; color: #fff; }
-    .header-title p { font-size: 13.5px; color: var(--text-muted); margin-top: 3px; }
-
-    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 28px; }
-    .metric-card { background: var(--bg-card); border: 1px solid var(--border); padding: 18px 20px; border-radius: 16px; backdrop-filter: blur(16px); }
-    .metric-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .metric-val { font-size: 26px; font-weight: 800; color: #fff; }
-    .metric-sub { font-size: 12px; color: var(--emerald); font-weight: 600; margin-top: 4px; }
-
-    .view-section { display: none; }
-    .view-section.active { display: block; animation: fadeIn 0.25s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-    .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 26px; margin-bottom: 22px; backdrop-filter: blur(16px); }
-    .panel-header { margin-bottom: 20px; }
-    .panel-header h2 { font-size: 18px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
-    .panel-header p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
-
-    .input-group { margin-bottom: 16px; }
-    .input-label { display: block; font-size: 12.5px; font-weight: 600; color: #cbd5e1; margin-bottom: 8px; }
-    input, textarea, select {
-      width: 100%; padding: 13px 16px; background: rgba(5, 8, 16, 0.7); border: 1px solid var(--border);
-      border-radius: 12px; color: #fff; font-size: 14px; outline: none; transition: all 0.2s;
+    .brand { font-size: 18px; font-weight: 800; letter-spacing: -0.4px; }
+    .brand span { color: var(--accent); }
+    .menu-trigger {
+      background: var(--ios-glass-card);
+      border: 1px solid var(--ios-glass-border);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
     }
-    input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
-    .btn-action {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      color: #fff; border: none; padding: 13px 22px; border-radius: 12px; font-weight: 700;
-      font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.15s;
-    }
-    .btn-action:hover { transform: translateY(-1px); }
-    .btn-secondary { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid var(--border); }
-    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
+    /* APP CONTAINER */
+    .app-wrap { padding: 18px 16px; }
+
+    /* iOS LIQUID CARDS */
+    .glass-card {
+      background: var(--ios-glass-card);
+      border: 1px solid var(--ios-glass-border);
+      box-shadow: 0 16px 36px -10px rgba(0,0,0,0.65), inset 0 1px 1px var(--ios-specular);
+      backdrop-filter: var(--ios-blur);
+      -webkit-backdrop-filter: var(--ios-blur);
+      border-radius: 22px;
+      padding: 20px 18px;
+      margin-bottom: 16px;
+    }
+
+    /* METRICS STRIP */
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .metric-pill {
+      background: rgba(18, 24, 43, 0.55);
+      border: 1px solid var(--ios-glass-border);
+      padding: 14px;
+      border-radius: 18px;
+      backdrop-filter: blur(14px);
+    }
+    .metric-lbl { font-size: 10.5px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; }
+    .metric-val { font-size: 20px; font-weight: 800; margin-top: 3px; color: #fff; }
+    .metric-sub { font-size: 11px; color: var(--emerald); font-weight: 600; margin-top: 2px; }
+
+    /* HEADERS */
+    h2.tab-h { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+    p.tab-p { font-size: 12px; color: var(--text-sub); margin-bottom: 16px; line-height: 1.4; }
+
+    /* INPUTS */
+    input, textarea {
+      width: 100%;
+      background: rgba(8, 12, 22, 0.65);
+      border: 1px solid var(--ios-glass-border);
+      border-radius: 14px;
+      padding: 13px 14px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      margin-bottom: 12px;
+      backdrop-filter: blur(10px);
+    }
+    input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
+
+    /* BUTTONS */
+    .ios-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+      cursor: pointer;
+    }
+    .ios-btn:active { transform: scale(0.98); }
+
+    /* SECRET BLOCK */
     .secret-box {
-      background: #05070e; border: 1px dashed rgba(99, 102, 241, 0.35); padding: 14px 18px; border-radius: 14px;
-      display: flex; justify-content: space-between; align-items: center; margin: 12px 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--cyan);
+      background: rgba(0,0,0,0.45);
+      border: 1px dashed rgba(99, 102, 241, 0.4);
+      padding: 12px;
+      border-radius: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cyan);
+      word-break: break-all;
+      margin-bottom: 12px;
     }
-    .code-container { position: relative; margin-top: 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-    .code-tag { background: #0b0f19; padding: 8px 16px; font-size: 11.5px; font-weight: 700; color: var(--text-muted); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    pre { background: #05070e; padding: 16px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #cbd5e1; line-height: 1.6; }
 
-    .menu-toggle { display: none; background: transparent; border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 8px; cursor: pointer; }
-    @media (max-width: 900px) {
-      aside { transform: translateX(-100%); }
-      aside.open { transform: translateX(0); }
-      main { margin-left: 0; padding: 20px 16px; }
-      .menu-toggle { display: block; }
+    /* CODE BLOCKS */
+    pre {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--ios-glass-border);
+      border-radius: 14px;
+      padding: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #e2e8f0;
+      overflow-x: auto;
+      margin-bottom: 12px;
+      line-height: 1.5;
     }
+
+    /* VIEWS */
+    .view-tab { display: none; }
+    .view-tab.active { display: block; animation: sheetUp 0.22s ease-out; }
+    @keyframes sheetUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* iOS BOTTOM NAVIGATION DOCK */
+    .bottom-dock {
+      position: fixed;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      height: 60px;
+      background: rgba(14, 18, 34, 0.72);
+      backdrop-filter: var(--ios-blur);
+      -webkit-backdrop-filter: var(--ios-blur);
+      border: 1px solid var(--ios-glass-border);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 95;
+    }
+    .dock-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+    }
+    .dock-btn.active { color: var(--cyan); }
+    .dock-btn span.icon { font-size: 17px; }
+
+    /* iOS GLASS SLIDE-OVER DRAWER */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(15, 20, 36, 0.88);
+      backdrop-filter: var(--ios-blur);
+      -webkit-backdrop-filter: var(--ios-blur);
+      border-top: 1px solid var(--ios-glass-border);
+      border-radius: 26px 26px 0 0;
+      padding: 16px 20px 34px;
+      z-index: 105;
+      transform: translateY(100%);
+      transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+      max-height: 82vh;
+      overflow-y: auto;
+    }
+    .drawer.open { transform: translateY(0); }
+    .drawer-handle { width: 38px; height: 4px; background: rgba(255,255,255,0.25); border-radius: 99px; margin: 0 auto 16px; }
+    .drawer-label { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-sub); margin: 14px 4px 6px; }
+    .drawer-item {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 13px 16px;
+      border-radius: 14px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      cursor: pointer;
+    }
+    .drawer-item:active { background: var(--accent); }
   </style>
 </head>
 <body>
 
-  <aside id="sidebar">
-    <div class="brand-box">
-      <div class="brand-name">PrimeGate <span>PRO</span></div>
-      <div class="badge-pro">CPM ₹500</div>
-    </div>
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="brand">PrimeGate <span>PRO</span></div>
+    <button class="menu-trigger" onclick="openDrawer()">☰ All Tools</button>
+  </header>
 
-    <div class="nav-label">Core Overview</div>
-    <ul class="nav-list">
-      <li><button class="nav-btn active" onclick="switchTab('overview')">📊 Overview & Stats</button></li>
-      <li><button class="nav-btn" onclick="switchTab('quicklink')">⚡ Quick Shrinker</button></li>
-      <li><button class="nav-btn" onclick="switchTab('mass')">📦 Mass Shrinker</button></li>
-      <li><button class="nav-btn" onclick="switchTab('withdraw')">💸 Withdraw ($1 / ₹85)</button></li>
-    </ul>
+  <div class="app-wrap">
 
-    <div class="nav-label">Developer Tools</div>
-    <ul class="nav-list">
-      <li><button class="nav-btn" onclick="switchTab('api')">🔌 Developers API</button></li>
-      <li><button class="nav-btn" onclick="switchTab('fps')">🌐 Full Page Script</button></li>
-      <li><button class="nav-btn" onclick="switchTab('redirect')">🚀 Quick Redirect (/st)</button></li>
-    </ul>
-
-    <div class="nav-label">Network & Config</div>
-    <ul class="nav-list">
-      <li><button class="nav-btn" onclick="switchTab('referral')">👥 Referral Network</button></li>
-      <li><button class="nav-btn" onclick="switchTab('settings')">⚙️ Account Config</button></li>
-    </ul>
-
-    <div class="user-footer">
-      <div class="user-info">
-        <div class="user-avatar" id="avatarLetter">A</div>
-        <div class="user-meta">
-          <h4 id="userDisplayId">8644980176</h4>
-          <p>Active Publisher</p>
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <main>
-    <div class="top-header">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-        <div class="header-title">
-          <h1 id="pageTitle">Developer REST API</h1>
-          <p id="pageSub">Automate link creation and monetization directly within your apps and bots.</p>
-        </div>
-      </div>
-      <div>
-        <a href="https://t.me/FILE_STOREB_BOT" target="_blank" class="btn-action btn-secondary" style="text-decoration:none;">
-          🤖 Open Telegram Bot
-        </a>
-      </div>
-    </div>
-
+    <!-- FLOATING LIVE STATS -->
     <div class="metric-grid">
-      <div class="metric-card">
-        <div class="metric-top">Publisher CPM <span style="color:var(--emerald);">● Guaranteed</span></div>
-        <div class="metric-val">₹500.00</div>
-        <div class="metric-sub">$6.00 Fixed Global Rate</div>
+      <div class="metric-pill">
+        <div class="metric-lbl">Current Rate</div>
+        <div class="metric-val">₹500</div>
+        <div class="metric-sub">$6 Global CPM</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-top">Min Payout Threshold</div>
-        <div class="metric-val">$1.00 <span style="font-size:16px; color:var(--text-muted);">(₹85)</span></div>
-        <div class="metric-sub">Instant UPI & USDT</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-top">Active Pipeline</div>
-        <div class="metric-val">3-Step Gateway</div>
-        <div class="metric-sub">MultiTag & Smartlink</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-top">Reward Per Visit</div>
-        <div class="metric-val">₹0.50</div>
-        <div class="metric-sub">Per Verified Download</div>
+      <div class="metric-pill">
+        <div class="metric-lbl">Min Payout</div>
+        <div class="metric-val">$1.00</div>
+        <div class="metric-sub">₹85.00 Instant</div>
       </div>
     </div>
 
-    <!-- TAB: DEVELOPER API -->
-    <div id="view-api" class="view-section active">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>🔑 Personal Authentication Secret</h2>
-          <p>Keep confidential. Use this API secret token to authenticate all programmatic link generation requests.</p>
+    <!-- 1. DEFAULT OPEN TAB: OVERVIEW & DASHBOARD -->
+    <section id="view-overview" class="view-tab active">
+      <div class="glass-card">
+        <h2 class="tab-h">Publisher Dashboard</h2>
+        <p class="tab-p">Live earnings and verified visits across your links.</p>
+
+        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--ios-glass-border); padding:16px; border-radius:16px; margin-bottom:12px;">
+          <div style="font-size:11px; color:var(--text-sub); text-transform:uppercase; font-weight:700;">Account Balance</div>
+          <div style="font-size:28px; font-weight:800; color:var(--emerald); margin-top:2px;">₹85.50</div>
+          <div style="font-size:11.5px; color:var(--cyan); margin-top:2px;">Status: Eligible for $1 cashout</div>
         </div>
 
-        <div class="secret-box">
-          <span id="secretTokenDisplay">28e663a3d60714d93beafb02f92856187bae54ab</span>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn-action" style="padding: 7px 14px; font-size: 12px;" onclick="copySecret()">Copy Secret</button>
-            <button class="btn-action btn-secondary" style="padding: 7px 14px; font-size: 12px;" onclick="regenerateSecret()">Reissue</button>
-          </div>
+        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--ios-glass-border); padding:14px; border-radius:16px;">
+          <div style="font-size:11px; color:var(--text-sub); text-transform:uppercase; font-weight:700;">Verified Traffic</div>
+          <div style="font-size:22px; font-weight:800; color:#fff; margin-top:2px;">171 Completed Visits</div>
+          <div style="font-size:11px; color:var(--text-sub);">Payout: ₹0.50 per 3-step visit</div>
         </div>
+      </div>
+    </section>
 
-        <div class="panel-header">
-          <h2>🌐 Programmatic GET Endpoint Request</h2>
-          <p>Pass your authentication token and long destination URL as standard query parameters.</p>
-        </div>
+    <!-- 2. QUICK SHRINKER -->
+    <section id="view-quick" class="view-tab">
+      <div class="glass-card">
+        <h2 class="tab-h">Instant Link Generator</h2>
+        <p class="tab-p">Create a monetized 3-step verification link on mobile.</p>
+        <input type="text" id="quickDest" placeholder="Paste target URL...">
+        <input type="text" id="quickSlug" placeholder="File code (e.g. file9x7)">
+        <button class="ios-btn" onclick="genLink()">Generate High-CPM Link ➔</button>
 
-        <div class="code-container">
-          <div class="code-tag">
-            <span>GET REQUEST STRUCTURE</span>
-            <button class="btn-action btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="copyCode('apiEndpointCode')">Copy URL</button>
-          </div>
-          <pre id="apiEndpointCode">https://primegate.pages.dev/api?api=28e663a3d60714d93beafb02f92856187bae54ab&url=https://destination.com&alias=custom-slug</pre>
-        </div>
+        <div id="quickBox" style="display:none; margin-top:14px; padding:12px; background:rgba(16,185,129,0.12); border:1px solid var(--emerald); border-radius:14px; font-family:'JetBrains Mono'; font-size:12px; word-break:break-all; color:#34d399;"></div>
+      </div>
+    </section>
 
-        <div class="code-container" style="margin-top: 18px;">
-          <div class="code-tag">
-            <span>STANDARD JSON RESPONSE SCHEMA</span>
-            <button class="btn-action btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="copyCode('jsonOutputCode')">Copy JSON</button>
-          </div>
-          <pre id="jsonOutputCode">{
+    <!-- 3. DEVELOPER REST API -->
+    <section id="view-api" class="view-tab">
+      <div class="glass-card">
+        <h2 class="tab-h">Developer REST API</h2>
+        <p class="tab-p">Automate link shortening from your Telegram bots and apps.</p>
+
+        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">YOUR API SECRET KEY</div>
+        <div class="secret-box" id="tokenDisplay">28e663a3d60714d93beafb02f92856187bae54ab</div>
+        <button class="ios-btn" style="padding:10px; font-size:12px; margin-bottom:16px;" onclick="copyToken()">Copy Secret Key</button>
+
+        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">GET ENDPOINT STRUCTURE</div>
+        <pre>https://primegate.pages.dev/api?api=28e663a3d60714d93beafb02f92856187bae54ab&url=https://destination.com</pre>
+
+        <div style="font-size:11px; font-weight:700; color:var(--text-sub); margin-bottom:4px;">JSON OUTPUT</div>
+        <pre>{
   "status": "success",
-  "shortenedUrl": "https://primegate.pages.dev/step1.html?code=xyz123&u=8644980176",
-  "message": "URL shortened successfully"
+  "shortenedUrl": "https://primegate.pages.dev/step1.html?code=a1b2c3&u=8644980176"
 }</pre>
-        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB: OVERVIEW -->
-    <div id="view-overview" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>📈 Publisher Performance & Payout Readiness</h2>
-          <p>Real-time analytics for verified impressions generated through your Telegram bot and links.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
-          <div style="background: rgba(0,0,0,0.3); border:1px solid var(--border); padding: 20px; border-radius: 14px;">
-            <h4 style="color:var(--text-muted); font-size:13px;">TOTAL ACCOUNT BALANCE</h4>
-            <div style="font-size:32px; font-weight:800; color:var(--emerald); margin: 6px 0;">₹85.50</div>
-            <p style="font-size:12px; color:var(--cyan);">Eligible for instant $1.00 USD cashout</p>
-          </div>
-          <div style="background: rgba(0,0,0,0.3); border:1px solid var(--border); padding: 20px; border-radius: 14px;">
-            <h4 style="color:var(--text-muted); font-size:13px;">VERIFIED CONVERSIONS</h4>
-            <div style="font-size:32px; font-weight:800; color:#fff; margin: 6px 0;">171 Clicks</div>
-            <p style="font-size:12px; color:var(--text-muted);">Rate: ₹0.50 / complete 3-step visit</p>
-          </div>
-        </div>
+    <!-- 4. MASS SHRINKER -->
+    <section id="view-mass" class="view-tab">
+      <div class="glass-card">
+        <h2 class="tab-h">Mass Shrinker</h2>
+        <p class="tab-p">Paste multiple URLs (one per line) to monetize in batch.</p>
+        <textarea id="massInput" rows="5" placeholder="https://example.com/file1&#10;https://example.com/file2"></textarea>
+        <button class="ios-btn" onclick="runMass()">Batch Compress ➔</button>
+        <textarea id="massOutput" rows="5" style="display:none; margin-top:12px;" readonly></textarea>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB: QUICK LINK -->
-    <div id="view-quicklink" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>⚡ Instant URL Shrinker</h2>
-          <p>Create a monetized 3-step high-CPM link for any long URL or Telegram deep link.</p>
-        </div>
-        <div class="input-group">
-          <label class="input-label">Destination URL</label>
-          <input type="text" id="quickDest" placeholder="https://t.me/FILE_STOREB_BOT?start=filexyz123">
-        </div>
-        <div class="input-group">
-          <label class="input-label">Custom Slug (Optional)</label>
-          <input type="text" id="quickSlug" placeholder="my-custom-file">
-        </div>
-        <button class="btn-action" onclick="generateQuickLink()">Generate PrimeGate Link ➔</button>
-
-        <div id="quickResult" style="display:none; margin-top:20px; background: rgba(16,185,129,0.1); border:1px solid var(--emerald); padding:16px; border-radius:12px;">
-          <div style="font-size:12px; font-weight:700; color:var(--emerald); margin-bottom:6px;">Your High-CPM Shortlink:</div>
-          <div id="quickResultUrl" style="font-family:'JetBrains Mono'; font-weight:700; word-break:break-all;"></div>
-        </div>
+    <!-- 5. WITHDRAW ($1 MINIMUM) -->
+    <section id="view-withdraw" class="view-tab">
+      <div class="glass-card">
+        <h2 class="tab-h">Withdraw Funds</h2>
+        <p class="tab-p">Direct settlement via UPI ID or Polygon USDT ($1.00 / ₹85.00 min).</p>
+        <input type="text" id="payDest" placeholder="UPI ID (e.g. name@upi) or USDT address">
+        <input type="number" id="payAmt" value="85" min="85">
+        <button class="ios-btn" onclick="cashout()">Submit Cashout ➔</button>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB: MASS SHRINKER -->
-    <div id="view-mass" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>📦 Mass URL Shrinker</h2>
-          <p>Shorten up to 20 URLs at once (enter one URL per line).</p>
-        </div>
-        <div class="input-group">
-          <textarea id="massUrls" rows="7" placeholder="https://example.com/file1&#10;https://example.com/file2&#10;https://example.com/file3"></textarea>
-        </div>
-        <button class="btn-action" onclick="processMassUrls()">Batch Shorten Links ➔</button>
-
-        <div id="massOutputContainer" style="display:none; margin-top:20px;">
-          <label class="input-label">Shortened Results:</label>
-          <textarea id="massResults" rows="7" readonly></textarea>
-        </div>
+    <!-- 6. REDIRECT /st & FULL PAGE SCRIPT -->
+    <section id="view-tools" class="view-tab">
+      <div class="glass-card">
+        <h2 class="tab-h">Quick HTML Redirect (`/st`)</h2>
+        <p class="tab-p">No JSON required. Put directly inside download buttons.</p>
+        <pre>&lt;a href="https://primegate.pages.dev/step1.html?dest=https://google.com&u=8644980176"&gt;Download&lt;/a&gt;</pre>
       </div>
-    </div>
-
-    <!-- TAB: REDIRECT /st -->
-    <div id="view-redirect" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>🚀 Quick Redirect Gateway (`/st`)</h2>
-          <p>Direct HTML embed link. Does not require JSON parsing. Place directly inside website buttons.</p>
-        </div>
-        <div class="code-container">
-          <div class="code-tag">
-            <span>HTML DOWNLOAD ANCHOR</span>
-            <button class="btn-action btn-secondary" style="padding:4px 10px; font-size:11px;" onclick="copyCode('stHtmlCode')">Copy Tag</button>
-          </div>
-          <pre id="stHtmlCode">&lt;a href="https://primegate.pages.dev/step1.html?dest=https://google.com&u=8644980176"&gt;
-  Download Stored Resource
-&lt;/a&gt;</pre>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB: FULL PAGE SCRIPT -->
-    <div id="view-fps" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>🌐 Full Page Script (FPS) Generator</h2>
-          <p>Monetize 100% of outbound download links on your blog or website automatically.</p>
-        </div>
-        <div class="code-container">
-          <div class="code-tag">
-            <span>EMBED CODE FOR &lt;HEAD&gt;</span>
-            <button class="btn-action btn-secondary" style="padding:4px 10px; font-size:11px;" onclick="copyCode('fpsCode')">Copy Script</button>
-          </div>
-          <pre id="fpsCode">&lt;script type="text/javascript"&gt;
-  var primegate_token = '28e663a3d60714d93beafb02f92856187bae54ab';
-  var primegate_domains = ['drive.google.com', 'mega.nz', 't.me'];
-  (function() {
-    document.querySelectorAll('a').forEach(function(a) {
-      if(primegate_domains.some(d => a.href.includes(d))) {
-        a.href = 'https://primegate.pages.dev/step1.html?code=' + encodeURIComponent(a.href) + '&u=8644980176';
-      }
-    });
-  })();
+      <div class="glass-card">
+        <h2 class="tab-h">Full Page Script</h2>
+        <p class="tab-p">Automatically shortens all outbound website links.</p>
+        <pre>&lt;script&gt;
+var token = '28e663a3d60714d93beafb02f92856187bae54ab';
+var domains = ['mega.nz', 't.me'];
 &lt;/script&gt;</pre>
-        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- TAB: WITHDRAW -->
-    <div id="view-withdraw" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>💸 Cashout & Withdrawals ($1 / ₹85 Minimum)</h2>
-          <p>Instant UPI & Polygon USDT transfers. Processed automatically within 12–24 hours.</p>
-        </div>
-        <div class="input-group">
-          <label class="input-label">Payout Target (UPI ID, USDT Address or Amazon Gift Email)</label>
-          <input type="text" id="withdrawDest" placeholder="e.g., yourname@upi or 0xPolygonWallet">
-        </div>
-        <div class="input-group">
-          <label class="input-label">Amount (INR)</label>
-          <input type="number" id="withdrawAmt" value="85" min="85">
-        </div>
-        <button class="btn-action" onclick="submitWithdraw()">Submit Payout Request ($1.00 Eligible) ➔</button>
-      </div>
-    </div>
+  </div>
 
-    <!-- TAB: REFERRAL -->
-    <div id="view-referral" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>👥 10% Lifetime Referral Network</h2>
-          <p>Share your publisher invite link and earn 10% of your friends' link revenues for life.</p>
-        </div>
-        <div class="secret-box">
-          <span>https://t.me/FILE_STOREB_BOT?start=ref_8644980176</span>
-          <button class="btn-action" style="padding: 7px 14px; font-size: 12px;" onclick="navigator.clipboard.writeText('https://t.me/FILE_STOREB_BOT?start=ref_8644980176'); alert('Copied!');">Copy Invite</button>
-        </div>
-      </div>
-    </div>
+  <!-- iOS BOTTOM DOCK -->
+  <nav class="bottom-dock">
+    <button class="dock-btn active" id="btn-dock-overview" onclick="showTab('overview')">
+      <span class="icon">📊</span>
+      <span>Overview</span>
+    </button>
+    <button class="dock-btn" id="btn-dock-quick" onclick="showTab('quick')">
+      <span class="icon">⚡</span>
+      <span>Quick Link</span>
+    </button>
+    <button class="dock-btn" id="btn-dock-api" onclick="showTab('api')">
+      <span class="icon">🔌</span>
+      <span>API</span>
+    </button>
+    <button class="dock-btn" id="btn-dock-withdraw" onclick="showTab('withdraw')">
+      <span class="icon">💸</span>
+      <span>Withdraw</span>
+    </button>
+  </nav>
 
-    <!-- TAB: SETTINGS -->
-    <div id="view-settings" class="view-section">
-      <div class="panel">
-        <div class="panel-header">
-          <h2>⚙️ Publisher Account Configuration</h2>
-          <p>Configure your Telegram synchronization and payment accounts.</p>
-        </div>
-        <div class="input-group">
-          <label class="input-label">Master Telegram Admin ID</label>
-          <input type="text" value="8644980176" readonly>
-        </div>
-        <div class="input-group">
-          <label class="input-label">Default Ad CPM Model</label>
-          <input type="text" value="₹500.00 / 1000 Impressions ($6 CPM)" readonly>
-        </div>
-      </div>
-    </div>
-  </main>
+  <!-- iOS SLIDE-OVER DRAWER -->
+  <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-handle"></div>
+    <div style="font-size:16px; font-weight:800; margin-bottom:12px;">PrimeGate PRO Navigation</div>
+
+    <div class="drawer-label">Core Suite</div>
+    <div class="drawer-item" onclick="selectFromDrawer('overview')">📊 Overview & Dashboard <span>➔</span></div>
+    <div class="drawer-item" onclick="selectFromDrawer('quick')">⚡ Quick Shrinker <span>➔</span></div>
+    <div class="drawer-item" onclick="selectFromDrawer('withdraw')">💸 Withdraw ($1 / ₹85) <span>➔</span></div>
+
+    <div class="drawer-label">Developer Tools</div>
+    <div class="drawer-item" onclick="selectFromDrawer('api')">🔌 Developer REST API <span>➔</span></div>
+    <div class="drawer-item" onclick="selectFromDrawer('mass')">📦 Mass URL Shrinker <span>➔</span></div>
+    <div class="drawer-item" onclick="selectFromDrawer('tools')">🚀 Quick Redirect & FPS <span>➔</span></div>
+
+    <div class="drawer-label">Telegram Sync</div>
+    <a href="https://t.me/FILE_STOREB_BOT" target="_blank" style="text-decoration:none;" class="drawer-item" onclick="closeDrawer()">
+      🤖 Open Telegram Bot <span>↗</span>
+    </a>
+  </div>
 
   <script>
-    function switchTab(tabId) {
-      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    // Tab Switcher
+    function showTab(tabId) {
+      document.querySelectorAll('.view-tab').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
 
-      const targetView = document.getElementById('view-' + tabId);
-      if (targetView) targetView.classList.add('active');
+      const activeView = document.getElementById('view-' + tabId);
+      if (activeView) activeView.classList.add('active');
 
-      const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes(tabId));
-      if (activeBtn) activeBtn.classList.add('active');
+      const dockBtn = document.getElementById('btn-dock-' + tabId);
+      if (dockBtn) dockBtn.classList.add('active');
 
-      const titleMap = {
-        'api': ['Developer REST API', 'Automate link creation and monetization directly within your apps and bots.'],
-        'overview': ['Account Analytics', 'Real-time performance metrics and publisher revenue breakdown.'],
-        'quicklink': ['Quick Link Shrinker', 'Generate clean, high-CPM 3-step verification links on demand.'],
-        'mass': ['Mass URL Shrinker', 'Batch compress and monetize up to 20 links simultaneously.'],
-        'withdraw': ['Withdrawal Gateway', 'Instant settlement with low $1.00 (₹85.00) minimum threshold.'],
-        'fps': ['Full Page Script', 'Monetize all outgoing links on websites and blogs automatically.'],
-        'redirect': ['Quick Direct Route (/st)', 'Simple HTML anchor routing without JSON parsing.'],
-        'referral': ['Referral Program', 'Earn 10% passive commission from invited creators.'],
-        'settings': ['Account Settings', 'Manage your publisher profile and verification settings.']
-      };
-
-      if (titleMap[tabId]) {
-        document.getElementById('pageTitle').innerText = titleMap[tabId][0];
-        document.getElementById('pageSub').innerText = titleMap[tabId][1];
-      }
-
-      if (window.innerWidth <= 900) {
-        document.getElementById('sidebar').classList.remove('open');
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function copyCode(elementId) {
-      const text = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(text).then(() => alert("Copied to clipboard!"));
+    // Drawer Controls (Auto-closes when tool selected)
+    function openDrawer() {
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('overlay').classList.add('open');
     }
 
-    function copySecret() {
-      const secret = document.getElementById('secretTokenDisplay').innerText;
-      navigator.clipboard.writeText(secret).then(() => alert("API Secret copied to clipboard!"));
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('overlay').classList.remove('open');
     }
 
-    function regenerateSecret() {
-      const chars = "0123456789abcdef";
-      let token = "";
-      for (let i = 0; i < 40; i++) token += chars[Math.floor(Math.random() * chars.length)];
-      document.getElementById('secretTokenDisplay').innerText = token;
-      alert("New API secret token reissued!");
+    function selectFromDrawer(tabId) {
+      closeDrawer(); // AUTO-CLOSE FIX
+      setTimeout(() => {
+        showTab(tabId);
+      }, 150);
     }
 
-    function generateQuickLink() {
+    // Tools logic
+    function copyToken() {
+      const t = document.getElementById('tokenDisplay').innerText;
+      navigator.clipboard.writeText(t).then(() => alert("Secret copied to clipboard!"));
+    }
+
+    function genLink() {
       const dest = document.getElementById('quickDest').value.trim();
-      const slug = document.getElementById('quickSlug').value.trim() || ("file" + Math.random().toString(36).substring(2, 8));
-      if (!dest) return alert("Please enter a target URL!");
-
-      const shortUrl = `${window.location.origin}/step1.html?code=${encodeURIComponent(slug)}&u=8644980176`;
-      document.getElementById('quickResultUrl').innerText = shortUrl;
-      document.getElementById('quickResult').style.display = "block";
+      const code = document.getElementById('quickSlug').value.trim() || ("file" + Math.random().toString(36).substring(2, 7));
+      if (!dest) return alert("Enter target URL!");
+      const url = `${window.location.origin}/step1.html?code=${encodeURIComponent(code)}&u=8644980176`;
+      const box = document.getElementById('quickBox');
+      box.innerText = url;
+      box.style.display = 'block';
     }
 
-    function processMassUrls() {
-      const raw = document.getElementById('massUrls').value.trim();
-      if (!raw) return alert("Please enter at least one URL!");
-      const lines = raw.split('\n').filter(l => l.trim().length > 0);
-      const results = lines.map(line => {
-        const slug = "file" + Math.random().toString(36).substring(2, 7);
-        return `${window.location.origin}/step1.html?code=${slug}&u=8644980176`;
+    function runMass() {
+      const txt = document.getElementById('massInput').value.trim();
+      if (!txt) return alert("Enter URLs!");
+      const res = txt.split('\n').filter(Boolean).map(() => {
+        const c = "file" + Math.random().toString(36).substring(2, 7);
+        return `${window.location.origin}/step1.html?code=${c}&u=8644980176`;
       });
-      document.getElementById('massResults').value = results.join('\n');
-      document.getElementById('massOutputContainer').style.display = "block";
+      const out = document.getElementById('massOutput');
+      out.value = res.join('\n');
+      out.style.display = 'block';
     }
 
-    function submitWithdraw() {
-      const dest = document.getElementById('withdrawDest').value.trim();
-      const amt = document.getElementById('withdrawAmt').value;
-      if (!dest) return alert("Please enter your UPI ID or USDT wallet address!");
+    function cashout() {
+      const dest = document.getElementById('payDest').value.trim();
+      const amt = document.getElementById('payAmt').value;
+      if (!dest) return alert("Enter UPI ID or USDT wallet!");
       if (amt < 85) return alert("Minimum withdrawal is ₹85.00 ($1.00)!");
-      alert(`✅ Withdrawal request for ₹${amt} to ${dest} submitted successfully! Funds will arrive within 12–24h.`);
-    }
-
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('open');
+      alert(`✅ Payout of ₹${amt} requested to ${dest}!`);
     }
   </script>
 </body>
