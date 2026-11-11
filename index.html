@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="monetag" content="0b86465c7516ac5d48547ea068513637">
   <title>PrimeGate PRO | Advanced Shortener & Developer Suite</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -25,18 +26,10 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
     body { background-color: var(--bg-base); color: var(--text-main); min-height: 100vh; display: flex; overflow-x: hidden; }
 
-    /* SIDEBAR */
     aside {
-      width: var(--sidebar-w);
-      background: var(--bg-surface);
-      border-right: 1px solid var(--border);
-      padding: 24px 16px;
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      top: 0; bottom: 0; left: 0;
-      z-index: 100;
-      transition: transform 0.3s ease;
+      width: var(--sidebar-w); background: var(--bg-surface); border-right: 1px solid var(--border);
+      padding: 24px 16px; display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; left: 0;
+      z-index: 100; transition: transform 0.3s ease;
     }
     .brand-box { display: flex; align-items: center; justify-content: space-between; padding: 0 8px 24px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
     .brand-name { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: #fff; display: flex; align-items: center; gap: 8px; }
@@ -51,7 +44,6 @@
     }
     .nav-btn:hover { background: rgba(255,255,255,0.04); color: #fff; }
     .nav-btn.active { background: var(--accent); color: #fff; box-shadow: 0 4px 14px var(--accent-glow); }
-    .nav-btn svg { width: 17px; height: 17px; stroke-width: 2; flex-shrink: 0; }
 
     .user-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
     .user-info { display: flex; align-items: center; gap: 10px; }
@@ -59,31 +51,26 @@
     .user-meta h4 { font-size: 13px; font-weight: 700; }
     .user-meta p { font-size: 11px; color: var(--emerald); font-weight: 600; }
 
-    /* MAIN CONTENT */
     main { margin-left: var(--sidebar-w); flex: 1; padding: 32px 36px; min-height: 100vh; background: radial-gradient(circle at 80% 10%, rgba(99,102,241,0.06), transparent 50%); }
     .top-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
     .header-title h1 { font-size: 24px; font-weight: 800; color: #fff; }
     .header-title p { font-size: 13.5px; color: var(--text-muted); margin-top: 3px; }
 
-    /* METRIC CARDS */
     .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 28px; }
     .metric-card { background: var(--bg-card); border: 1px solid var(--border); padding: 18px 20px; border-radius: 16px; backdrop-filter: blur(16px); }
     .metric-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
     .metric-val { font-size: 26px; font-weight: 800; color: #fff; }
     .metric-sub { font-size: 12px; color: var(--emerald); font-weight: 600; margin-top: 4px; }
 
-    /* TAB SECTIONS */
     .view-section { display: none; }
     .view-section.active { display: block; animation: fadeIn 0.25s ease-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* CARDS & PANELS */
     .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 26px; margin-bottom: 22px; backdrop-filter: blur(16px); }
     .panel-header { margin-bottom: 20px; }
     .panel-header h2 { font-size: 18px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
     .panel-header p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
 
-    /* FORM ELEMENTS */
     .input-group { margin-bottom: 16px; }
     .input-label { display: block; font-size: 12.5px; font-weight: 600; color: #cbd5e1; margin-bottom: 8px; }
     input, textarea, select {
@@ -100,7 +87,6 @@
     .btn-secondary { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid var(--border); }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
-    /* SECRET & CODE BLOCKS */
     .secret-box {
       background: #05070e; border: 1px dashed rgba(99, 102, 241, 0.35); padding: 14px 18px; border-radius: 14px;
       display: flex; justify-content: space-between; align-items: center; margin: 12px 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--cyan);
@@ -109,7 +95,6 @@
     .code-tag { background: #0b0f19; padding: 8px 16px; font-size: 11.5px; font-weight: 700; color: var(--text-muted); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
     pre { background: #05070e; padding: 16px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #cbd5e1; line-height: 1.6; }
 
-    /* RESPONSIVE TOGGLE */
     .menu-toggle { display: none; background: transparent; border: 1px solid var(--border); color: #fff; padding: 8px; border-radius: 8px; cursor: pointer; }
     @media (max-width: 900px) {
       aside { transform: translateX(-100%); }
@@ -121,12 +106,9 @@
 </head>
 <body>
 
-  <!-- ================= SIDEBAR ================= -->
   <aside id="sidebar">
     <div class="brand-box">
-      <div class="brand-name">
-        PrimeGate <span>PRO</span>
-      </div>
+      <div class="brand-name">PrimeGate <span>PRO</span></div>
       <div class="badge-pro">CPM ₹500</div>
     </div>
 
@@ -162,7 +144,6 @@
     </div>
   </aside>
 
-  <!-- ================= MAIN CONTAINER ================= -->
   <main>
     <div class="top-header">
       <div style="display: flex; align-items: center; gap: 14px;">
@@ -179,7 +160,6 @@
       </div>
     </div>
 
-    <!-- METRIC METERS -->
     <div class="metric-grid">
       <div class="metric-card">
         <div class="metric-top">Publisher CPM <span style="color:var(--emerald);">● Guaranteed</span></div>
@@ -203,7 +183,7 @@
       </div>
     </div>
 
-    <!-- ================= TAB 1: DEVELOPER API (URLKING CLONE) ================= -->
+    <!-- TAB: DEVELOPER API -->
     <div id="view-api" class="view-section active">
       <div class="panel">
         <div class="panel-header">
@@ -244,53 +224,9 @@
 }</pre>
         </div>
       </div>
-
-      <!-- CODE SNIPPETS -->
-      <div class="panel">
-        <div class="panel-header">
-          <h2>💻 Developer Integrations</h2>
-          <p>Ready-to-use snippets for Node.js bots, Python workers, and PHP backends.</p>
-        </div>
-
-        <div class="code-container">
-          <div class="code-tag"><span>JAVASCRIPT / NODE.JS (FETCH API)</span></div>
-          <pre>// Node.js / JavaScript Fetch
-const apiToken = "28e663a3d60714d93beafb02f92856187bae54ab";
-const targetUrl = encodeURIComponent("https://t.me/FILE_STOREB_BOT?start=file123");
-
-fetch(`https://primegate.pages.dev/api?api=${apiToken}&url=${targetUrl}`)
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "success") {
-      console.log("High-CPM Link:", data.shortenedUrl);
-    } else {
-      console.error("API Error:", data.message);
-    }
-  });</pre>
-        </div>
-
-        <div class="code-container" style="margin-top: 16px;">
-          <div class="code-tag"><span>PHP BACKEND</span></div>
-          <pre>&lt;?php
-// PHP cURL / file_get_contents Integration
-$api_token = "28e663a3d60714d93beafb02f92856187bae54ab";
-$long_url  = urlencode("https://example.com/file");
-$api_url   = "https://primegate.pages.dev/api?api={$api_token}&url={$long_url}";
-
-$response = @file_get_contents($api_url);
-$data = json_decode($response, true);
-
-if ($data && $data['status'] === 'success') {
-    echo "Shortened: " . $data['shortenedUrl'];
-} else {
-    echo "Error: " . ($data['message'] ?? 'Connection Failed');
-}
-?&gt;</pre>
-        </div>
-      </div>
     </div>
 
-    <!-- ================= TAB 2: OVERVIEW & STATS ================= -->
+    <!-- TAB: OVERVIEW -->
     <div id="view-overview" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -312,7 +248,7 @@ if ($data && $data['status'] === 'success') {
       </div>
     </div>
 
-    <!-- ================= TAB 3: QUICK LINK SHRINKER ================= -->
+    <!-- TAB: QUICK LINK -->
     <div id="view-quicklink" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -336,7 +272,7 @@ if ($data && $data['status'] === 'success') {
       </div>
     </div>
 
-    <!-- ================= TAB 4: MASS SHRINKER ================= -->
+    <!-- TAB: MASS SHRINKER -->
     <div id="view-mass" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -344,9 +280,7 @@ if ($data && $data['status'] === 'success') {
           <p>Shorten up to 20 URLs at once (enter one URL per line).</p>
         </div>
         <div class="input-group">
-          <textarea id="massUrls" rows="7" placeholder="https://example.com/file1
-https://example.com/file2
-https://example.com/file3"></textarea>
+          <textarea id="massUrls" rows="7" placeholder="https://example.com/file1&#10;https://example.com/file2&#10;https://example.com/file3"></textarea>
         </div>
         <button class="btn-action" onclick="processMassUrls()">Batch Shorten Links ➔</button>
 
@@ -357,7 +291,7 @@ https://example.com/file3"></textarea>
       </div>
     </div>
 
-    <!-- ================= TAB 5: QUICK REDIRECT (/st) ================= -->
+    <!-- TAB: REDIRECT /st -->
     <div id="view-redirect" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -376,7 +310,7 @@ https://example.com/file3"></textarea>
       </div>
     </div>
 
-    <!-- ================= TAB 6: FULL PAGE SCRIPT (FPS) ================= -->
+    <!-- TAB: FULL PAGE SCRIPT -->
     <div id="view-fps" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -403,7 +337,7 @@ https://example.com/file3"></textarea>
       </div>
     </div>
 
-    <!-- ================= TAB 7: WITHDRAW ================= -->
+    <!-- TAB: WITHDRAW -->
     <div id="view-withdraw" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -422,7 +356,7 @@ https://example.com/file3"></textarea>
       </div>
     </div>
 
-    <!-- ================= TAB 8: REFERRAL & CONFIG ================= -->
+    <!-- TAB: REFERRAL -->
     <div id="view-referral" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -436,6 +370,7 @@ https://example.com/file3"></textarea>
       </div>
     </div>
 
+    <!-- TAB: SETTINGS -->
     <div id="view-settings" class="view-section">
       <div class="panel">
         <div class="panel-header">
@@ -452,11 +387,9 @@ https://example.com/file3"></textarea>
         </div>
       </div>
     </div>
-
   </main>
 
   <script>
-    // Tab Switching Router
     function switchTab(tabId) {
       document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -467,7 +400,6 @@ https://example.com/file3"></textarea>
       const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes(tabId));
       if (activeBtn) activeBtn.classList.add('active');
 
-      // Update Header Subtitles dynamically
       const titleMap = {
         'api': ['Developer REST API', 'Automate link creation and monetization directly within your apps and bots.'],
         'overview': ['Account Analytics', 'Real-time performance metrics and publisher revenue breakdown.'],
@@ -490,7 +422,6 @@ https://example.com/file3"></textarea>
       }
     }
 
-    // Copy Utility
     function copyCode(elementId) {
       const text = document.getElementById(elementId).innerText;
       navigator.clipboard.writeText(text).then(() => alert("Copied to clipboard!"));
@@ -509,7 +440,6 @@ https://example.com/file3"></textarea>
       alert("New API secret token reissued!");
     }
 
-    // Quick Link Generator
     function generateQuickLink() {
       const dest = document.getElementById('quickDest').value.trim();
       const slug = document.getElementById('quickSlug').value.trim() || ("file" + Math.random().toString(36).substring(2, 8));
@@ -520,7 +450,6 @@ https://example.com/file3"></textarea>
       document.getElementById('quickResult').style.display = "block";
     }
 
-    // Mass Shrinker Logic
     function processMassUrls() {
       const raw = document.getElementById('massUrls').value.trim();
       if (!raw) return alert("Please enter at least one URL!");
@@ -533,7 +462,6 @@ https://example.com/file3"></textarea>
       document.getElementById('massOutputContainer').style.display = "block";
     }
 
-    // Withdrawal Simulator
     function submitWithdraw() {
       const dest = document.getElementById('withdrawDest').value.trim();
       const amt = document.getElementById('withdrawAmt').value;
