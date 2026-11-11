@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="monetag" content="0b86465c7516ac5d48547ea068513637">
   <title>PrimeGate PRO | Mobile Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -94,6 +93,20 @@
     /* HEADERS */
     h2.tab-h { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
     p.tab-p { font-size: 12px; color: var(--text-sub); margin-bottom: 16px; line-height: 1.4; }
+
+    /* A-ADS EMBED BOX */
+    .ad-container {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed var(--ios-glass-border);
+      border-radius: 16px;
+      padding: 10px;
+      margin: 14px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90px;
+    }
 
     /* INPUTS */
     input, textarea {
@@ -257,8 +270,8 @@
       </div>
       <div class="metric-pill">
         <div class="metric-lbl">Min Payout</div>
-        <div class="metric-val">$1.00</div>
-        <div class="metric-sub">₹85.00 Instant</div>
+        <div class="metric-val">$0.00</div>
+        <div class="metric-sub">FaucetPay Auto</div>
       </div>
     </div>
 
@@ -268,16 +281,23 @@
         <h2 class="tab-h">Publisher Dashboard</h2>
         <p class="tab-p">Live earnings and verified visits across your links.</p>
 
+        <!-- AADS AD UNIT 2461720 EMBED FOR VERIFICATION -->
+        <div class="ad-container">
+          <div id="frame" style="width: 100%; margin: auto; position: relative;">
+            <iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0; padding:0; width:100%; height:auto; overflow:hidden; display:block; margin:auto'></iframe>
+          </div>
+        </div>
+
         <div style="background:rgba(0,0,0,0.3); border:1px solid var(--ios-glass-border); padding:16px; border-radius:16px; margin-bottom:12px;">
           <div style="font-size:11px; color:var(--text-sub); text-transform:uppercase; font-weight:700;">Account Balance</div>
           <div style="font-size:28px; font-weight:800; color:var(--emerald); margin-top:2px;">₹85.50</div>
-          <div style="font-size:11.5px; color:var(--cyan); margin-top:2px;">Status: Eligible for $1 cashout</div>
+          <div style="font-size:11.5px; color:var(--cyan); margin-top:2px;">Status: Payout Active via FaucetPay</div>
         </div>
 
         <div style="background:rgba(0,0,0,0.3); border:1px solid var(--ios-glass-border); padding:14px; border-radius:16px;">
           <div style="font-size:11px; color:var(--text-sub); text-transform:uppercase; font-weight:700;">Verified Traffic</div>
           <div style="font-size:22px; font-weight:800; color:#fff; margin-top:2px;">171 Completed Visits</div>
-          <div style="font-size:11px; color:var(--text-sub);">Payout: ₹0.50 per 3-step visit</div>
+          <div style="font-size:11px; color:var(--text-sub);">Payout: Auto-settled to wallet</div>
         </div>
       </div>
     </section>
@@ -400,7 +420,6 @@ var domains = ['mega.nz', 't.me'];
   </div>
 
   <script>
-    // Tab Switcher
     function showTab(tabId) {
       document.querySelectorAll('.view-tab').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
@@ -414,7 +433,6 @@ var domains = ['mega.nz', 't.me'];
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Drawer Controls (Auto-closes when tool selected)
     function openDrawer() {
       document.getElementById('drawer').classList.add('open');
       document.getElementById('overlay').classList.add('open');
@@ -426,13 +444,12 @@ var domains = ['mega.nz', 't.me'];
     }
 
     function selectFromDrawer(tabId) {
-      closeDrawer(); // AUTO-CLOSE FIX
+      closeDrawer();
       setTimeout(() => {
         showTab(tabId);
       }, 150);
     }
 
-    // Tools logic
     function copyToken() {
       const t = document.getElementById('tokenDisplay').innerText;
       navigator.clipboard.writeText(t).then(() => alert("Secret copied to clipboard!"));
