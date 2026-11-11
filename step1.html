@@ -2,100 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="monetag" content="0b86465c7516ac5d48547ea068513637">
-  <title>Cloud Architecture & High-Speed Edge Networks | PrimeGate Tech</title>
-
-  <!-- ================= MONETAG VIGNETTE FULL SCREEN BANNER (ZONE 12234670) ================= -->
-  <script>(function(s){s.dataset.zone='12234670',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-  <!-- ======================================================================================= -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>PrimeGate | Verification Step 1/3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: #07090e; color: #cbd5e1; line-height: 1.8; font-size: 16px; padding-bottom: 60px; }
-    header { background: #0b0f19; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 18px 24px; position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-size: 18px; font-weight: 800; color: #38bdf8; letter-spacing: -0.5px; }
-    .badge { font-size: 11px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 4px 10px; border-radius: 999px; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.3); }
-    .container { max-width: 780px; margin: 0 auto; padding: 32px 20px; }
-    h1 { font-size: 26px; font-weight: 800; color: #f8fafc; line-height: 1.3; margin-bottom: 16px; }
-    .meta { font-size: 13px; color: #64748b; margin-bottom: 24px; display: flex; gap: 16px; }
-    p { margin-bottom: 20px; }
-    h2 { font-size: 20px; font-weight: 700; color: #f1f5f9; margin: 32px 0 14px; }
-    .callout { background: rgba(30, 41, 59, 0.5); border-left: 4px solid #38bdf8; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 24px 0; font-size: 14px; color: #94a3b8; }
-    .verify-box { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; padding: 28px 20px; text-align: center; margin-top: 40px; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.8); }
-    .step-tag { font-size: 12px; font-weight: 700; color: #60a5fa; text-transform: uppercase; margin-bottom: 8px; }
-    .timer-val { font-size: 40px; font-weight: 900; color: #38bdf8; margin: 12px 0; }
-    .btn { display: block; width: 100%; max-width: 340px; margin: 0 auto; padding: 16px 0; border-radius: 14px; font-weight: 700; font-size: 16px; border: none; background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.3); text-decoration: none; cursor: not-allowed; transition: all 0.3s; }
-    .btn.active { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); }
+    :root {
+      --glass: rgba(18, 24, 42, 0.65);
+      --glass-card: rgba(28, 36, 62, 0.5);
+      --border: rgba(255, 255, 255, 0.12);
+      --blur: blur(24px);
+      --accent: #6366f1;
+      --cyan: #38bdf8;
+      --emerald: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #070913 60%, #020408 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+    .top-pill {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--glass-card);
+      backdrop-filter: var(--blur);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      margin-bottom: 16px;
+    }
+    .step-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(99, 102, 241, 0.25);
+      border: 1px solid var(--accent);
+      color: #c7d2fe;
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    h1 { font-size: 19px; font-weight: 800; margin-bottom: 6px; }
+    p.sub { font-size: 12.5px; color: #94a3b8; line-height: 1.5; margin-bottom: 16px; }
+
+    /* A-ADS EMBED BOX */
+    .ad-box {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      padding: 8px;
+      margin: 14px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+    }
+
+    .timer-wrap {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .timer-num { font-size: 30px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--cyan); }
+    .timer-lbl { font-size: 11px; color: #94a3b8; font-weight: 600; text-transform: uppercase; }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border-radius: 16px;
+      border: none;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    }
+    .btn:active { transform: scale(0.98); }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="brand">PrimeGate Tech Insights</div>
-    <div class="badge">STEP 1 OF 3</div>
-  </header>
+  <div class="top-pill">🛡️ PrimeGate Secure Gateway</div>
 
-  <div class="container">
-    <h1>Understanding Next-Generation Cloud Edge Computing & Decentralized Routing</h1>
-    <div class="meta">
-      <span>Published: 2026 Edition</span>
-      <span>•</span>
-      <span>Read Time: 4 mins</span>
+  <div class="card">
+    <span class="step-badge">Security Check 1 of 3</span>
+    <h1>Human Verification</h1>
+    <p class="sub">Verify your session to unlock access to the requested Telegram media file.</p>
+
+    <!-- BEGIN AADS AD UNIT 2461720 -->
+    <div class="ad-box">
+      <div id="frame" style="width: 100%; margin: auto; position: relative;">
+        <iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0; padding:0; width:100%; height:auto; overflow:hidden; display:block; margin:auto'></iframe>
+      </div>
+    </div>
+    <!-- END AADS AD UNIT 2461720 -->
+
+    <div class="timer-wrap" id="timerBox">
+      <div class="timer-num" id="timeCount">10</div>
+      <div class="timer-lbl">Please wait for link verification...</div>
     </div>
 
-    <p>Modern internet infrastructures have moved far beyond traditional centralized server hubs. When digital services experience massive traffic spikes, standard data centers often face latency degradation, bottle-necked bandwidth pipes, and geographic request dropouts. To resolve this, edge computing moves compute power and storage closer to the location where it is needed.</p>
-
-    <div class="callout">
-      <strong>Pro Tip:</strong> Global low-latency response times depend heavily on edge-caching mechanics and optimized distributed DNS nodes working in tandem.
-    </div>
-
-    <h2>How Edge Nodes Minimize Global Latency</h2>
-    <p>In a standard client-server configuration, every HTTP packet travels thousands of physical miles to an origin server. By contrast, intelligent edge networks distribute incoming requests to the closest physical point of presence (PoP). When a client initiates a handshake, the edge server evaluates routing tables in real time, delivering assets instantly with sub-20ms ping rates.</p>
-
-    <p>Furthermore, modern security layers analyze device integrity without collecting invasive telemetry. This zero-trust model confirms session legitimacy while preventing automated scrapers from exhausting backend infrastructure.</p>
-
-    <div class="verify-box">
-      <div class="step-tag">Step 1 of 3: Session Authentication</div>
-      <h3 style="color: #f8fafc; font-size: 20px;">Human Verification in Progress</h3>
-      <p style="font-size: 13px; color: #94a3b8; margin-top: 4px;">Scroll down completed. Please hold on while your secure token registers.</p>
-      
-      <div class="timer-val" id="time">10</div>
-      <button id="goBtn" class="btn" disabled>Please wait 10s...</button>
-    </div>
+    <button class="btn" id="nextBtn" onclick="goNext()">Proceed to Step 2 ➔</button>
   </div>
 
   <script>
-    const MONETAG_DIRECT_LINK = "https://uplcm.com/4/12238370";
-    let count = 10;
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code') || "session";
-    const uploader = params.get('u') || "0";
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code') || '';
+    const u = urlParams.get('u') || '';
 
-    const nextUrl = `step2.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(uploader)}`;
-    const timeEl = document.getElementById("time");
-    const btn = document.getElementById("goBtn");
+    let sec = 10;
+    const timeCount = document.getElementById('timeCount');
+    const timerBox = document.getElementById('timerBox');
+    const nextBtn = document.getElementById('nextBtn');
 
-    const interval = setInterval(() => {
-      count--;
-      if (count > 0) {
-        timeEl.innerText = count;
-        btn.innerText = "Please wait " + count + "s...";
+    const countdown = setInterval(() => {
+      sec--;
+      if (sec > 0) {
+        timeCount.innerText = sec;
       } else {
-        clearInterval(interval);
-        timeEl.innerText = "✓";
-        timeEl.style.color = "#10b981";
-        btn.innerText = "Continue to Step 2 ➔";
-        btn.disabled = false;
-        btn.classList.add("active");
+        clearInterval(countdown);
+        timerBox.style.display = 'none';
+        nextBtn.style.display = 'block';
       }
     }, 1000);
 
-    btn.addEventListener("click", () => {
-      if (btn.disabled) return;
-      try { window.open(MONETAG_DIRECT_LINK, "_blank"); } catch(e) {}
-      window.location.href = nextUrl;
-    });
+    function goNext() {
+      window.location.href = `step2.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(u)}`;
+    }
   </script>
 </body>
 </html>
