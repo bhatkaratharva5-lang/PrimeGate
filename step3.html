@@ -2,115 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>PrimeGate | Unlocked & Ready</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Step 3/3 | Human Verification</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --glass: rgba(18, 24, 42, 0.65);
-      --glass-card: rgba(28, 36, 62, 0.5);
+      --bg: #070913;
+      --card: rgba(22, 28, 48, 0.55);
       --border: rgba(255, 255, 255, 0.12);
-      --blur: blur(24px);
-      --emerald: #10b981;
+      --cyan: #38bdf8;
+      --text: #f8fafc;
+      --text-sub: #94a3b8;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
     body {
-      background: radial-gradient(circle at 50% 0%, #064e3b 0%, #070913 60%, #020408 100%);
-      color: #fff;
+      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 14px;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 16px;
     }
-    .card {
-      width: 100%;
-      max-width: 440px;
-      background: var(--glass-card);
-      backdrop-filter: var(--blur);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 24px 18px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-      margin-top: 30px;
+    .wrapper { width: 100%; max-width: 440px; }
+    .header-strip { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .step-pill { font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 0.5px; text-transform: uppercase; }
+    .progress-track { width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 99px; margin-bottom: 12px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #6366f1, var(--cyan)); }
+    .ad-card { width: 100%; background: rgba(0, 0, 0, 0.35); border: 1px dashed var(--border); border-radius: 12px; padding: 4px; margin: 8px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 16px; margin: 10px 0; text-align: center; }
+    .article-card h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .article-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; margin-bottom: 12px; }
+    canvas { background: #f8fafc; border-radius: 8px; display: block; margin: 0 auto; }
+    input[type="text"] {
+      width: 150px;
+      padding: 9px;
+      font-size: 17px;
       text-align: center;
-    }
-    .check-icon {
-      width: 58px; height: 58px;
-      background: rgba(16, 185, 129, 0.2);
-      border: 1px solid var(--emerald);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      margin: 0 auto 14px;
-    }
-    h1 { font-size: 21px; font-weight: 800; margin-bottom: 6px; }
-    p.sub { font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 18px; }
-
-    .ad-box {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px dashed var(--border);
-      border-radius: 16px;
-      padding: 8px;
-      margin: 16px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100px;
-    }
-
-    .btn-deliver {
-      width: 100%;
-      padding: 16px;
-      border-radius: 16px;
-      border: none;
-      font-size: 15px;
       font-weight: 800;
-      cursor: pointer;
-      background: linear-gradient(135deg, #10b981, #059669);
+      text-transform: uppercase;
+      background: rgba(8, 12, 22, 0.8);
+      border: 1px solid var(--border);
       color: #fff;
-      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      border-radius: 8px;
+      margin-top: 10px;
+      outline: none;
+      letter-spacing: 3px;
     }
-    .btn-deliver:active { transform: scale(0.98); }
+    .nav-btn { width: 100%; padding: 14px 18px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-size: 14px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="check-icon">✓</div>
-    <h1>Verification Complete!</h1>
-    <p class="sub">Your file pass is active. Tap below to receive your file in Telegram.</p>
-
-    <!-- BEGIN AADS AD UNIT 2461720 -->
-    <div class="ad-box">
-      <div id="frame" style="width: 100%; margin: auto; position: relative;">
-        <iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0; padding:0; width:100%; height:auto; overflow:hidden; display:block; margin:auto'></iframe>
-      </div>
+  <div class="wrapper">
+    <div class="header-strip">
+      <span class="step-pill">STEP 3 OF 3: FINAL VERIFY</span>
+      <span style="font-size:11px; color:#10b981;">100%</span>
     </div>
-    <!-- END AADS AD UNIT 2461720 -->
+    
+    <div class="progress-track">
+      <div class="progress-fill"></div>
+    </div>
 
-    <button class="btn-deliver" onclick="openBotFile()">
-      🤖 Get File in Telegram Bot
-    </button>
+    <!-- Top 2 Banners -->
+    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+
+    <div class="article-card">
+      <h3>Human Verification Gate</h3>
+      <p>Enter the 5 characters shown below to generate your direct token:</p>
+
+      <canvas id="captchaCanvas" width="220" height="65"></canvas>
+      <input type="text" id="captchaInput" placeholder="CODE" maxlength="5" />
+
+      <button id="navBtn" class="nav-btn" onclick="verifyAndRedirect()">
+        <span>Unlock & Claim File</span>
+        <span>➔</span>
+      </button>
+    </div>
+
+    <!-- Bottom 3 Banners -->
+    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
   </div>
 
   <script>
-    const BOT_USERNAME = "FILE_STOREB_BOT";
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code') || 'session';
-    const u = urlParams.get('u') || '0';
+    const code = urlParams.get('code') || 'demo_file';
+    const BOT_USERNAME = "FILE_STOREB_BOT"; // Telegram Bot
 
-    function openBotFile() {
-      const startPayload = `v_${code}_u_${u}`;
-      window.location.href = `https://t.me/${BOT_USERNAME}?start=${encodeURIComponent(startPayload)}`;
+    let currentCaptcha = "";
+
+    function renderCaptcha() {
+      const canvas = document.getElementById('captchaCanvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#f8fafc";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const chars = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+      currentCaptcha = "";
+      for (let i = 0; i < 5; i++) {
+        currentCaptcha += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      for (let i = 0; i < 4; i++) {
+        ctx.beginPath();
+        ctx.moveTo(Math.random()*canvas.width, Math.random()*canvas.height);
+        ctx.lineTo(Math.random()*canvas.width, Math.random()*canvas.height);
+        ctx.strokeStyle = "#475569";
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < currentCaptcha.length; i++) {
+        ctx.save();
+        ctx.font = "bold 26px sans-serif";
+        ctx.fillStyle = ["#0f172a", "#1e3a8a", "#065f46", "#831843"][i % 4];
+        ctx.translate(22 + (i * 36), 42 + (Math.random()-0.5)*6);
+        ctx.rotate((Math.random() - 0.5) * 0.4);
+        ctx.fillText(currentCaptcha[i], 0, 0);
+        ctx.restore();
+      }
+    }
+
+    renderCaptcha();
+
+    function verifyAndRedirect() {
+      const val = document.getElementById('captchaInput').value.trim().toUpperCase();
+      if (val !== currentCaptcha) {
+        alert("Incorrect captcha code! Try again.");
+        renderCaptcha();
+        return;
+      }
+      window.location.href = `https://t.me/${BOT_USERNAME}?start=PASS_${encodeURIComponent(code)}`;
     }
   </script>
 </body>
