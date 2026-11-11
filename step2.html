@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Step 2/3 - Security Check</title>
+
+  <!-- MONETAG MULTITAG (ZONE 12234663) -->
+  <script>(function(s){s.dataset.zone='12234663',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: radial-gradient(circle at 50% 10%, #0f2e3d, #07090e 65%); color: #f9fafb; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px 16px; }
+    .card { width: 100%; max-width: 420px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 28px; padding: 32px 24px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); }
+    .badge { display: inline-block; padding: 6px 14px; background: rgba(14, 165, 233, 0.2); border: 1px solid rgba(14, 165, 233, 0.4); border-radius: 9999px; font-size: 12px; font-weight: 700; color: #38bdf8; text-transform: uppercase; margin-bottom: 18px; }
+    h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    p { font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 24px; }
+    .timer-circle { width: 90px; height: 90px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #0284c7; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800; color: #38bdf8; }
+    .btn { display: block; width: 100%; padding: 16px 0; border-radius: 16px; font-size: 15px; font-weight: 700; border: none; background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.35); text-decoration: none; cursor: not-allowed; transition: all 0.3s; }
+    .btn.active { background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; cursor: pointer; box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">Gateway 2/3 • Token Check</div>
+    <h2>Authenticating Session</h2>
+    <p>Verifying secure connection protocols. Please hold on.</p>
+    <div class="timer-circle"><span id="timerText">8</span></div>
+    <a href="javascript:void(0)" id="actionBtn" class="btn">Please wait 8s...</a>
+  </div>
+
+  <script>
+    let remaining = 8;
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code') || "session";
+    const uploader = params.get('u') || "0";
+
+    const nextUrl = `step3.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(uploader)}`;
+    const timerText = document.getElementById("timerText");
+    const actionBtn = document.getElementById("actionBtn");
+
+    const countdown = setInterval(() => {
+      remaining--;
+      if (remaining > 0) {
+        timerText.innerText = remaining;
+        actionBtn.innerText = `Please wait ${remaining}s...`;
+      } else {
+        clearInterval(countdown);
+        timerText.innerText = "✓";
+        actionBtn.innerText = "Continue to Final Step ➔";
+        actionBtn.href = nextUrl;
+        actionBtn.classList.add("active");
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
