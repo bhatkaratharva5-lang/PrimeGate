@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Step 1/3 - Security Verification</title>
+
+  <!-- MONETAG VIGNETTE (ZONE 12234670) -->
+  <script>(function(s){s.dataset.zone='12234670',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: radial-gradient(circle at 50% 10%, #1e1b4b, #07090e 65%); color: #f9fafb; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px 16px; }
+    .card { width: 100%; max-width: 420px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 28px; padding: 32px 24px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); }
+    .badge { display: inline-block; padding: 6px 14px; background: rgba(99, 102, 241, 0.2); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 9999px; font-size: 12px; font-weight: 700; color: #a5b4fc; text-transform: uppercase; margin-bottom: 18px; }
+    h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    p { font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 24px; }
+    .timer-circle { width: 90px; height: 90px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #6366f1; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800; color: #818cf8; }
+    .btn { display: block; width: 100%; padding: 16px 0; border-radius: 16px; font-size: 15px; font-weight: 700; border: none; background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.35); text-decoration: none; cursor: not-allowed; transition: all 0.3s; }
+    .btn.active { background: linear-gradient(135deg, #4f46e5, #3730a3); color: #fff; cursor: pointer; box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">Gateway 1/3 • High Speed</div>
+    <h2>Verifying Cloud Node</h2>
+    <p>Please wait 10 seconds while the high-speed gateway initializes.</p>
+    <div class="timer-circle"><span id="timerText">10</span></div>
+    <a href="javascript:void(0)" id="actionBtn" class="btn">Please wait 10s...</a>
+  </div>
+
+  <script>
+    let remaining = 10;
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code') || "session";
+    const uploader = params.get('u') || "0";
+
+    const nextUrl = `step2.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(uploader)}`;
+    const timerText = document.getElementById("timerText");
+    const actionBtn = document.getElementById("actionBtn");
+
+    const countdown = setInterval(() => {
+      remaining--;
+      if (remaining > 0) {
+        timerText.innerText = remaining;
+        actionBtn.innerText = `Please wait ${remaining}s...`;
+      } else {
+        clearInterval(countdown);
+        timerText.innerText = "✓";
+        actionBtn.innerText = "Continue to Step 2 ➔";
+        actionBtn.href = nextUrl;
+        actionBtn.classList.add("active");
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
