@@ -7,23 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #070913;
-      --card: rgba(22, 28, 48, 0.55);
-      --border: rgba(255, 255, 255, 0.12);
-      --cyan: #38bdf8;
-      --text: #f8fafc;
-      --text-sub: #94a3b8;
-    }
+    :root { --bg: #070913; --card: rgba(22, 28, 48, 0.55); --border: rgba(255, 255, 255, 0.12); --cyan: #38bdf8; --text: #f8fafc; --text-sub: #94a3b8; }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body {
-      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      padding: 14px;
-      min-height: 100vh;
-    }
+    body { background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%); color: var(--text); display: flex; justify-content: center; padding: 14px; min-height: 100vh; }
     .wrapper { width: 100%; max-width: 440px; }
     .header-strip { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .step-pill { font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 0.5px; text-transform: uppercase; }
@@ -38,40 +24,36 @@
   </style>
 </head>
 <body>
-
   <div class="wrapper">
     <div class="header-strip">
       <span class="step-pill">STEP 4 OF 6: PROTOCOL AUDIT</span>
       <span style="font-size:11px; color:var(--text-sub);">66%</span>
     </div>
-    
-    <div class="progress-track">
-      <div class="progress-fill"></div>
-    </div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
 
-    <!-- Top 2 Banners -->
+    <!-- Top 2 Unique Banners -->
     <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461811' src='//acceptable.a-ads.com/2461811/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
 
     <div class="article-card">
       <h3>Automated Bot Scraper Mitigation</h3>
-      <p>Multi-layered gateway verifications prevent malicious scrapers from exhausting shared bandwidth allocations. Passing this protocol layer keeps peer links fast and accessible for real users.</p>
-
-      <button id="navBtn" class="nav-btn" onclick="goToStep5()" disabled>
+      <p>Multi-layered gateway verifications prevent malicious scrapers from exhausting shared bandwidth allocations. Passing this protocol layer keeps peer links fast.</p>
+      <button id="navBtn" class="nav-btn" onclick="goNext()" disabled>
         <span id="btnLabel">Preparing Step 5 (3s)...</span>
         <span>➔</span>
       </button>
     </div>
 
-    <!-- Bottom 3 Banners -->
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <!-- Bottom 3 Unique Banners -->
+    <div class="ad-card"><iframe data-aa='2461812' src='//acceptable.a-ads.com/2461812/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461813' src='//acceptable.a-ads.com/2461813/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461814' src='//acceptable.a-ads.com/2461814/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code') || 'demo_file';
+    const u = urlParams.get('u') || '';
 
     let countdown = 3;
     const btn = document.getElementById('navBtn');
@@ -88,8 +70,8 @@
       }
     }, 1000);
 
-    function goToStep5() {
-      window.location.href = `step5.html?code=${encodeURIComponent(code)}`;
+    function goNext() {
+      window.location.href = `step5.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(u)}`;
     }
   </script>
 </body>
