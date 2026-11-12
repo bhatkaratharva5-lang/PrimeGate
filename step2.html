@@ -3,32 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Step 2/3 | Stream Checksum</title>
+  <title>Step 2/6 | Node Verification</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #070913;
-      --card: rgba(22, 28, 48, 0.55);
-      --border: rgba(255, 255, 255, 0.12);
-      --cyan: #38bdf8;
-      --text: #f8fafc;
-      --text-sub: #94a3b8;
-    }
+    :root { --bg: #070913; --card: rgba(22, 28, 48, 0.55); --border: rgba(255, 255, 255, 0.12); --cyan: #38bdf8; --text: #f8fafc; --text-sub: #94a3b8; }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body {
-      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      padding: 14px;
-      min-height: 100vh;
-    }
+    body { background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%); color: var(--text); display: flex; justify-content: center; padding: 14px; min-height: 100vh; }
     .wrapper { width: 100%; max-width: 440px; }
     .header-strip { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .step-pill { font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 0.5px; text-transform: uppercase; }
     .progress-track { width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 99px; margin-bottom: 12px; overflow: hidden; }
-    .progress-fill { height: 100%; width: 66%; background: linear-gradient(90deg, #6366f1, var(--cyan)); }
+    .progress-fill { height: 100%; width: 33.3%; background: linear-gradient(90deg, #6366f1, var(--cyan)); }
     .ad-card { width: 100%; background: rgba(0, 0, 0, 0.35); border: 1px dashed var(--border); border-radius: 12px; padding: 4px; margin: 8px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 16px; margin: 10px 0; }
     .article-card h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
@@ -38,40 +24,36 @@
   </style>
 </head>
 <body>
-
   <div class="wrapper">
     <div class="header-strip">
-      <span class="step-pill">STEP 2 OF 3: BUFFER CHECK</span>
-      <span style="font-size:11px; color:var(--text-sub);">66%</span>
+      <span class="step-pill">STEP 2 OF 6: NODE ALLOCATION</span>
+      <span style="font-size:11px; color:var(--text-sub);">33%</span>
     </div>
-    
-    <div class="progress-track">
-      <div class="progress-fill"></div>
-    </div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
 
-    <!-- Top 2 Banners -->
+    <!-- Top 2 Unique Banners -->
     <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461811' src='//acceptable.a-ads.com/2461811/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
 
     <div class="article-card">
-      <h3>Stream Compression & Validation</h3>
-      <p>Direct checksum validation prevents payload corruptions across mobile clusters. Ensuring packet distribution authenticity maintains fast peer links without dropping packets.</p>
-
-      <button id="navBtn" class="nav-btn" onclick="goToStep3()" disabled>
-        <span id="btnLabel">Preparing Step 3 (3s)...</span>
+      <h3>High-Speed Edge Bandwidth</h3>
+      <p>Cloud servers dynamically balance file delivery loads across regional edge nodes to guarantee fast download speeds without throttling.</p>
+      <button id="navBtn" class="nav-btn" onclick="goNext()" disabled>
+        <span id="btnLabel">Please Wait (3s)...</span>
         <span>➔</span>
       </button>
     </div>
 
-    <!-- Bottom 3 Banners -->
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <!-- Bottom 3 Unique Banners -->
+    <div class="ad-card"><iframe data-aa='2461812' src='//acceptable.a-ads.com/2461812/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461813' src='//acceptable.a-ads.com/2461813/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461814' src='//acceptable.a-ads.com/2461814/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code') || 'demo_file';
+    const u = urlParams.get('u') || '';
 
     let countdown = 3;
     const btn = document.getElementById('navBtn');
@@ -80,16 +62,16 @@
     const timer = setInterval(() => {
       countdown--;
       if (countdown > 0) {
-        label.innerText = `Preparing Step 3 (${countdown}s)...`;
+        label.innerText = `Please Wait (${countdown}s)...`;
       } else {
         clearInterval(timer);
         btn.disabled = false;
-        label.innerText = "Proceed to Step 3 ➔";
+        label.innerText = "Continue to Step 3 ➔";
       }
     }, 1000);
 
-    function goToStep3() {
-      window.location.href = `step3.html?code=${encodeURIComponent(code)}`;
+    function goNext() {
+      window.location.href = `step3.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(u)}`;
     }
   </script>
 </body>
