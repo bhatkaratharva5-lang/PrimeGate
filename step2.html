@@ -1,61 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Step 2 of 6 - PrimeGate Verification</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 2 of 3 — PrimeGate</title>
   <style>
-    :root { --bg: #070913; --card: rgba(22, 28, 48, 0.55); --border: rgba(255, 255, 255, 0.12); --cyan: #38bdf8; --text: #f8fafc; --text-sub: #94a3b8; }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%); color: var(--text); display: flex; justify-content: center; padding: 14px; min-height: 100vh; }
-    .wrapper { width: 100%; max-width: 440px; }
-    .ad-card { width: 100%; background: rgba(0, 0, 0, 0.35); border: 1px dashed var(--border); border-radius: 12px; padding: 4px; margin: 8px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 20px 16px; margin: 12px 0; text-align: center; }
-    .badge { display: inline-block; background: rgba(56, 189, 248, 0.15); color: var(--cyan); font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 99px; margin-bottom: 10px; border: 1px solid rgba(56, 189, 248, 0.3); }
-    .article-card h2 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .article-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; margin-bottom: 16px; }
-    .nav-btn { width: 100%; padding: 14px 18px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; font-size: 14px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .nav-btn.disabled { opacity: 0.55; pointer-events: none; }
+    body { margin: 0; font-family: system-ui, sans-serif; background: #0b0f19; color: #f8fafc; padding: 16px; display: flex; flex-direction: column; align-items: center; }
+    .container { max-width: 480px; width: 100%; text-align: center; }
+    .badge { background: #1e293b; color: #38bdf8; padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 12px; }
+    .ad-slot { background: #131a2a; border: 1px dashed #334155; border-radius: 10px; min-height: 60px; margin: 12px 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .ad-box { min-height: 250px; }
+    .btn { background: #2563eb; color: #fff; border: none; padding: 14px 24px; border-radius: 10px; font-size: 1rem; font-weight: 600; width: 100%; cursor: pointer; margin-top: 10px; }
+    .btn:disabled { background: #334155; color: #94a3b8; cursor: not-allowed; }
+    .tg-link { display: inline-block; margin-top: 14px; color: #38bdf8; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <!-- Top 2 Adsterra Ad Units -->
-    <div class="ad-card"><!-- PASTE ADSTERRA BANNER 1 CODE HERE --></div>
-    <div class="ad-card"><!-- PASTE ADSTERRA BANNER 2 CODE HERE --></div>
+  <div class="container">
+    <div class="badge">Step 2 of 3</div>
+    <h2>Checking Security Session...</h2>
 
-    <div class="article-card">
-      <div class="badge">STEP 2 OF 6</div>
-      <h2>🔍 Checking Browser Integrity</h2>
-      <p>Anti-bot filter is validating your connection to prevent automated spam requests.</p>
-      <a id="nextBtn" href="step3.html" class="nav-btn disabled">
-        <span id="btnText">Please wait 8s...</span>
-      </a>
-    </div>
+    <!-- LANA AD SLOT 1 (320x50) -->
+    <div class="ad-slot"><!-- PASTE LANA 320x50 CODE --></div>
 
-    <!-- Bottom 2 Adsterra Ad Units -->
-    <div class="ad-card"><!-- PASTE ADSTERRA NATIVE BANNER (UNIT 3) CODE HERE --></div>
-    <div class="ad-card"><!-- PASTE ADSTERRA BANNER 300x250 (UNIT 4) CODE HERE --></div>
+    <!-- LANA AD SLOT 2 (300x250) -->
+    <div class="ad-slot ad-box"><!-- PASTE LANA 300x250 CODE --></div>
+
+    <button id="nextBtn" class="btn" disabled>Please wait 8s...</button>
+    <a href="https://t.me/PrimeXNetworkOfficial" target="_blank" rel="noopener noreferrer" class="tg-link">Join Official Telegram (@PrimeXNetworkOfficial)</a>
+
+    <!-- LANA AD SLOT 3 (320x50) -->
+    <div class="ad-slot"><!-- PASTE LANA 320x50 CODE --></div>
+
+    <!-- LANA AD SLOT 4 (300x250) -->
+    <div class="ad-slot ad-box"><!-- PASTE LANA 300x250 CODE --></div>
+
+    <!-- LANA AD SLOT 5 (320x50) -->
+    <div class="ad-slot"><!-- PASTE LANA 320x50 CODE --></div>
   </div>
 
   <script>
-    let sec = 8;
-    const btn = document.getElementById('nextBtn');
-    const txt = document.getElementById('btnText');
+    if (!sessionStorage.getItem("pg_token") || sessionStorage.getItem("pg_s1") !== "1") {
+      window.location.href = "index.html";
+    }
+
+    let timeLeft = 8;
+    const btn = document.getElementById("nextBtn");
+
     const timer = setInterval(() => {
-      sec--;
-      if (sec > 0) {
-        txt.textContent = `Please wait ${sec}s...`;
+      timeLeft--;
+      if (timeLeft > 0) {
+        btn.textContent = `Please wait ${timeLeft}s...`;
       } else {
         clearInterval(timer);
-        btn.classList.remove('disabled');
-        txt.textContent = 'Continue to Step 3 ➔';
+        btn.disabled = false;
+        btn.textContent = "Continue to Final Step →";
       }
     }, 1000);
+
+    btn.addEventListener("click", () => {
+      sessionStorage.setItem("pg_s2", "1");
+      window.location.href = "step3.html";
+    });
   </script>
-  <!-- 5th Ad Unit: Adsterra Social Bar (Unit ID: 6195104) -->
-  <script type="text/javascript" src="PASTE_YOUR_ADSTERRA_6195104_SCRIPT_URL_HERE"></script>
 </body>
 </html>
