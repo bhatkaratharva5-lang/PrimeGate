@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Step 2/6 | Node Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 2 of 6 - PrimeGate Verification</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -11,68 +11,51 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
     body { background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%); color: var(--text); display: flex; justify-content: center; padding: 14px; min-height: 100vh; }
     .wrapper { width: 100%; max-width: 440px; }
-    .header-strip { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .step-pill { font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 0.5px; text-transform: uppercase; }
-    .progress-track { width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 99px; margin-bottom: 12px; overflow: hidden; }
-    .progress-fill { height: 100%; width: 33.3%; background: linear-gradient(90deg, #6366f1, var(--cyan)); }
     .ad-card { width: 100%; background: rgba(0, 0, 0, 0.35); border: 1px dashed var(--border); border-radius: 12px; padding: 4px; margin: 8px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 16px; margin: 10px 0; }
-    .article-card h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .article-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
-    .nav-btn { width: 100%; padding: 13px 18px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; font-size: 14px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 12px; }
-    .nav-btn:disabled { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.8); }
+    .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 20px 16px; margin: 12px 0; text-align: center; }
+    .badge { display: inline-block; background: rgba(56, 189, 248, 0.15); color: var(--cyan); font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 99px; margin-bottom: 10px; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .article-card h2 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .article-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; margin-bottom: 16px; }
+    .nav-btn { width: 100%; padding: 14px 18px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; font-size: 14px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .nav-btn.disabled { opacity: 0.55; pointer-events: none; }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <div class="header-strip">
-      <span class="step-pill">STEP 2 OF 6: NODE ALLOCATION</span>
-      <span style="font-size:11px; color:var(--text-sub);">33%</span>
-    </div>
-    <div class="progress-track"><div class="progress-fill"></div></div>
-
-    <!-- Top 2 Unique Banners -->
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461811' src='//acceptable.a-ads.com/2461811/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <!-- Top 2 Adsterra Ad Units -->
+    <div class="ad-card"><!-- PASTE ADSTERRA BANNER 1 CODE HERE --></div>
+    <div class="ad-card"><!-- PASTE ADSTERRA BANNER 2 CODE HERE --></div>
 
     <div class="article-card">
-      <h3>High-Speed Edge Bandwidth</h3>
-      <p>Cloud servers dynamically balance file delivery loads across regional edge nodes to guarantee fast download speeds without throttling.</p>
-      <button id="navBtn" class="nav-btn" onclick="goNext()" disabled>
-        <span id="btnLabel">Please Wait (3s)...</span>
-        <span>➔</span>
-      </button>
+      <div class="badge">STEP 2 OF 6</div>
+      <h2>🔍 Checking Browser Integrity</h2>
+      <p>Anti-bot filter is validating your connection to prevent automated spam requests.</p>
+      <a id="nextBtn" href="step3.html" class="nav-btn disabled">
+        <span id="btnText">Please wait 8s...</span>
+      </a>
     </div>
 
-    <!-- Bottom 3 Unique Banners -->
-    <div class="ad-card"><iframe data-aa='2461812' src='//acceptable.a-ads.com/2461812/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461813' src='//acceptable.a-ads.com/2461813/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461814' src='//acceptable.a-ads.com/2461814/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <!-- Bottom 2 Adsterra Ad Units -->
+    <div class="ad-card"><!-- PASTE ADSTERRA NATIVE BANNER (UNIT 3) CODE HERE --></div>
+    <div class="ad-card"><!-- PASTE ADSTERRA BANNER 300x250 (UNIT 4) CODE HERE --></div>
   </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code') || 'demo_file';
-    const u = urlParams.get('u') || '';
-
-    let countdown = 3;
-    const btn = document.getElementById('navBtn');
-    const label = document.getElementById('btnLabel');
-
+    let sec = 8;
+    const btn = document.getElementById('nextBtn');
+    const txt = document.getElementById('btnText');
     const timer = setInterval(() => {
-      countdown--;
-      if (countdown > 0) {
-        label.innerText = `Please Wait (${countdown}s)...`;
+      sec--;
+      if (sec > 0) {
+        txt.textContent = `Please wait ${sec}s...`;
       } else {
         clearInterval(timer);
-        btn.disabled = false;
-        label.innerText = "Continue to Step 3 ➔";
+        btn.classList.remove('disabled');
+        txt.textContent = 'Continue to Step 3 ➔';
       }
     }, 1000);
-
-    function goNext() {
-      window.location.href = `step3.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(u)}`;
-    }
   </script>
+  <!-- 5th Ad Unit: Adsterra Social Bar (Unit ID: 6195104) -->
+  <script type="text/javascript" src="PASTE_YOUR_ADSTERRA_6195104_SCRIPT_URL_HERE"></script>
 </body>
 </html>
