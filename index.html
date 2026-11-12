@@ -1,52 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PrimeGate Verification Portal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrimeGate — Verification Portal</title>
   <style>
-    :root { --bg: #070913; --card: rgba(22, 28, 48, 0.55); --border: rgba(255, 255, 255, 0.12); --cyan: #38bdf8; --text: #f8fafc; --text-sub: #94a3b8; }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%); color: var(--text); display: flex; justify-content: center; padding: 14px; min-height: 100vh; }
-    .wrapper { width: 100%; max-width: 440px; }
-    .ad-card { width: 100%; background: rgba(0, 0, 0, 0.35); border: 1px dashed var(--border); border-radius: 12px; padding: 4px; margin: 8px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 20px 16px; margin: 12px 0; text-align: center; }
-    .article-card h2 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .article-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; margin-bottom: 16px; }
-    .nav-btn { width: 100%; padding: 14px 18px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; font-size: 14px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    body { margin: 0; font-family: system-ui, sans-serif; background: #0b0f19; color: #f8fafc; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 16px; }
+    .card { background: #131a2a; border: 1px solid #1e293b; border-radius: 16px; padding: 28px 20px; max-width: 420px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    h1 { font-size: 1.4rem; margin-bottom: 8px; color: #38bdf8; }
+    p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; }
+    .btn { display: inline-block; margin-top: 18px; background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; padding: 13px 26px; border-radius: 10px; font-weight: 600; border: none; cursor: pointer; width: 100%; font-size: 1rem; }
+    .tg-btn { display: block; box-sizing: border-box; margin-top: 12px; background: #1e293b; border: 1px solid #38bdf8; color: #38bdf8; padding: 11px 16px; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.92rem; }
+    .footer-link { display: inline-block; margin-top: 16px; font-size: 0.82rem; color: #64748b; text-decoration: none; }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <!-- Top 2 Adsterra Ad Units -->
-    <div class="ad-card">
-      <!-- PASTE ADSTERRA BANNER 1 CODE HERE -->
-    </div>
-    <div class="ad-card">
-      <!-- PASTE ADSTERRA BANNER 2 CODE HERE -->
-    </div>
-
-    <div class="article-card">
-      <h2>🛡️ PrimeGate Security Gateway</h2>
-      <p>Encrypted verification portal for secure file delivery and anti-bot protection. Access our official Telegram File Store Bot below:</p>
-      <a href="https://t.me/FILE_STOREB_BOT" class="nav-btn">
-        <span>Open Telegram Bot</span>
-        <span>➔</span>
-      </a>
-    </div>
-
-    <!-- Bottom 2 Adsterra Ad Units -->
-    <div class="ad-card">
-      <!-- PASTE ADSTERRA NATIVE BANNER (UNIT 3) CODE HERE -->
-    </div>
-    <div class="ad-card">
-      <!-- PASTE ADSTERRA BANNER 300x250 (UNIT 4) CODE HERE -->
-    </div>
+  <div class="card">
+    <h1>PrimeGate — Link Verification</h1>
+    <p>Complete 3 quick verification steps (approx. 20 seconds) to unlock your destination link.</p>
+    <button class="btn" onclick="startVerification()">Start Verification (Step 1/3)</button>
+    <a href="https://t.me/PrimeXNetworkOfficial" target="_blank" rel="noopener noreferrer" class="tg-btn">Join Official Telegram Channel</a>
+    <a href="stats.html" class="footer-link">Uploader Earnings Dashboard →</a>
   </div>
 
-  <!-- 5th Ad Unit: Adsterra Social Bar (Unit ID: 6195104) -->
-  <script type="text/javascript" src="PASTE_YOUR_ADSTERRA_6195104_SCRIPT_URL_HERE"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token") || params.get("start");
+    const uploader = params.get("u") || "admin";
+
+    function startVerification() {
+      if (!token) {
+        alert("Invalid or missing link! Please open the verification link directly from Telegram.");
+        return;
+      }
+      sessionStorage.setItem("pg_token", token);
+      sessionStorage.setItem("pg_uploader", uploader);
+      sessionStorage.setItem("pg_s1", "0");
+      sessionStorage.setItem("pg_s2", "0");
+      sessionStorage.setItem("pg_s3", "0");
+      window.location.href = "step1.html";
+    }
+  </script>
 </body>
 </html>
