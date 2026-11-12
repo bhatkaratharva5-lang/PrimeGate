@@ -3,140 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Step 3/3 | Human Verification</title>
+  <title>Step 3/6 | Token Encryption</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #070913;
-      --card: rgba(22, 28, 48, 0.55);
-      --border: rgba(255, 255, 255, 0.12);
-      --cyan: #38bdf8;
-      --text: #f8fafc;
-      --text-sub: #94a3b8;
-    }
+    :root { --bg: #070913; --card: rgba(22, 28, 48, 0.55); --border: rgba(255, 255, 255, 0.12); --cyan: #38bdf8; --text: #f8fafc; --text-sub: #94a3b8; }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body {
-      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      padding: 14px;
-      min-height: 100vh;
-    }
+    body { background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg) 60%); color: var(--text); display: flex; justify-content: center; padding: 14px; min-height: 100vh; }
     .wrapper { width: 100%; max-width: 440px; }
     .header-strip { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .step-pill { font-size: 11px; font-weight: 800; color: var(--cyan); letter-spacing: 0.5px; text-transform: uppercase; }
     .progress-track { width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 99px; margin-bottom: 12px; overflow: hidden; }
-    .progress-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #6366f1, var(--cyan)); }
+    .progress-fill { height: 100%; width: 50%; background: linear-gradient(90deg, #6366f1, var(--cyan)); }
     .ad-card { width: 100%; background: rgba(0, 0, 0, 0.35); border: 1px dashed var(--border); border-radius: 12px; padding: 4px; margin: 8px 0; min-height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 16px; margin: 10px 0; text-align: center; }
+    .article-card { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(20px); border-radius: 18px; padding: 16px; margin: 10px 0; }
     .article-card h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .article-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; margin-bottom: 12px; }
-    canvas { background: #f8fafc; border-radius: 8px; display: block; margin: 0 auto; }
-    input[type="text"] {
-      width: 150px;
-      padding: 9px;
-      font-size: 17px;
-      text-align: center;
-      font-weight: 800;
-      text-transform: uppercase;
-      background: rgba(8, 12, 22, 0.8);
-      border: 1px solid var(--border);
-      color: #fff;
-      border-radius: 8px;
-      margin-top: 10px;
-      outline: none;
-      letter-spacing: 3px;
-    }
-    .nav-btn { width: 100%; padding: 14px 18px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-size: 14px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; }
+    .article-card p { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+    .nav-btn { width: 100%; padding: 13px 18px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; font-size: 14px; font-weight: 800; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 12px; }
+    .nav-btn:disabled { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.8); }
   </style>
 </head>
 <body>
-
   <div class="wrapper">
     <div class="header-strip">
-      <span class="step-pill">STEP 3 OF 3: FINAL VERIFY</span>
-      <span style="font-size:11px; color:#10b981;">100%</span>
+      <span class="step-pill">STEP 3 OF 6: TOKEN SIGNING</span>
+      <span style="font-size:11px; color:var(--text-sub);">50%</span>
     </div>
-    
-    <div class="progress-track">
-      <div class="progress-fill"></div>
-    </div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
 
-    <!-- Top 2 Banners -->
+    <!-- Top 2 Unique Banners -->
     <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461811' src='//acceptable.a-ads.com/2461811/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
 
     <div class="article-card">
-      <h3>Human Verification Gate</h3>
-      <p>Enter the 5 characters shown below to generate your direct token:</p>
-
-      <canvas id="captchaCanvas" width="220" height="65"></canvas>
-      <input type="text" id="captchaInput" placeholder="CODE" maxlength="5" />
-
-      <button id="navBtn" class="nav-btn" onclick="verifyAndRedirect()">
-        <span>Unlock & Claim File</span>
+      <h3>Cryptographic Session Key</h3>
+      <p>Generating a single-use cryptographic key bound to your Telegram user session to prevent unauthorized link sharing.</p>
+      <button id="navBtn" class="nav-btn" onclick="goNext()" disabled>
+        <span id="btnLabel">Please Wait (3s)...</span>
         <span>➔</span>
       </button>
     </div>
 
-    <!-- Bottom 3 Banners -->
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
-    <div class="ad-card"><iframe data-aa='2461720' src='//acceptable.a-ads.com/2461720/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <!-- Bottom 3 Unique Banners -->
+    <div class="ad-card"><iframe data-aa='2461812' src='//acceptable.a-ads.com/2461812/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461813' src='//acceptable.a-ads.com/2461813/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
+    <div class="ad-card"><iframe data-aa='2461814' src='//acceptable.a-ads.com/2461814/?size=Adaptive' style='border:0;padding:0;width:100%;height:auto;overflow:hidden;'></iframe></div>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code') || 'demo_file';
-    const BOT_USERNAME = "FILE_STOREB_BOT"; // Telegram Bot
+    const u = urlParams.get('u') || '';
 
-    let currentCaptcha = "";
+    let countdown = 3;
+    const btn = document.getElementById('navBtn');
+    const label = document.getElementById('btnLabel');
 
-    function renderCaptcha() {
-      const canvas = document.getElementById('captchaCanvas');
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#f8fafc";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const chars = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-      currentCaptcha = "";
-      for (let i = 0; i < 5; i++) {
-        currentCaptcha += chars.charAt(Math.floor(Math.random() * chars.length));
+    const timer = setInterval(() => {
+      countdown--;
+      if (countdown > 0) {
+        label.innerText = `Please Wait (${countdown}s)...`;
+      } else {
+        clearInterval(timer);
+        btn.disabled = false;
+        label.innerText = "Continue to Step 4 ➔";
       }
+    }, 1000);
 
-      for (let i = 0; i < 4; i++) {
-        ctx.beginPath();
-        ctx.moveTo(Math.random()*canvas.width, Math.random()*canvas.height);
-        ctx.lineTo(Math.random()*canvas.width, Math.random()*canvas.height);
-        ctx.strokeStyle = "#475569";
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
-      }
-
-      for (let i = 0; i < currentCaptcha.length; i++) {
-        ctx.save();
-        ctx.font = "bold 26px sans-serif";
-        ctx.fillStyle = ["#0f172a", "#1e3a8a", "#065f46", "#831843"][i % 4];
-        ctx.translate(22 + (i * 36), 42 + (Math.random()-0.5)*6);
-        ctx.rotate((Math.random() - 0.5) * 0.4);
-        ctx.fillText(currentCaptcha[i], 0, 0);
-        ctx.restore();
-      }
-    }
-
-    renderCaptcha();
-
-    function verifyAndRedirect() {
-      const val = document.getElementById('captchaInput').value.trim().toUpperCase();
-      if (val !== currentCaptcha) {
-        alert("Incorrect captcha code! Try again.");
-        renderCaptcha();
-        return;
-      }
-      window.location.href = `https://t.me/${BOT_USERNAME}?start=PASS_${encodeURIComponent(code)}`;
+    function goNext() {
+      window.location.href = `step4.html?code=${encodeURIComponent(code)}&u=${encodeURIComponent(u)}`;
     }
   </script>
 </body>
