@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrimeGate — Mini App Unlock</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0b0f19;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 16px;
+    }
+    .card {
+      background: #131a2a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 28px 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    h1 { font-size: 1.35rem; margin-bottom: 8px; color: #38bdf8; }
+    p { color: #94a3b8; font-size: 0.92rem; line-height: 1.5; margin-bottom: 20px; }
+    .btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .alt-btn {
+      display: block;
+      margin-top: 12px;
+      background: transparent;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      width: 100%;
+    }
+    #status { margin-top: 14px; font-size: 0.85rem; color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>PrimeGate Fast Unlock</h1>
+    <p>Watch a quick sponsor ad inside Telegram (10 seconds) to unlock your file instantly.</p>
+    <button id="adBtn" class="btn" onclick="watchAd()">Watch Ad & Unlock File</button>
+    <button class="alt-btn" onclick="fallbackWeb()">Having trouble? Verify via Web →</button>
+    <div id="status"></div>
+  </div>
+
+  <script>
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const rawStart = tg?.initDataUnsafe?.start_param || params.get("startapp") || params.get("token") || "";
+    
+    // Format support: "TOKEN" ya "TOKEN__UPLOADER"
+    let token = rawStart;
+    let uploader = params.get("u") || "admin";
+    if (rawStart.includes("__")) {
+      const parts = rawStart.split("__");
+      token = parts[0];
+      uploader = parts[1] || "admin";
+    }
+
+    const AdController = window.Adsgram ? window.Adsgram.init({ blockId: "int-59469" }) : null;
+
+    function completeUnlock() {
+      sessionStorage.setItem("pg_token", token);
+      sessionStorage.setItem("pg_uploader", uploader);
+      sessionStorage.setItem("pg_s1", "1");
+      sessionStorage.setItem("pg_s2", "1");
+      window.location.href = "step3.html";
+    }
+
+    function fallbackWeb() {
+      if (!token) {
+        document.getElementById("status").innerText = "Invalid file token! Open link from Telegram Bot.";
+        return;
+      }
+      window.location.href = `index.html?token=${encodeURIComponent(token)}&u=${encodeURIComponent(uploader)}`;
+    }
+
+    function watchAd() {
+      const btn = document.getElementById("adBtn");
+      const status = document.getElementById("status");
+
+      if (!token) {
+        status.innerText = "Error: Invalid file token! Open this link from @FILE_STOREB_BOT.";
+        return;
+      }
+
+      if (!AdController) {
+        status.innerText = "Ad SDK blocked. Redirecting to standard verification...";
+        setTimeout(fallbackWeb, 1000);
+        return;
+      }
+
+      btn.disabled = true;
+      status.innerText = "Loading sponsor ad...";
+
+      AdController.show().then(() => {
+        status.innerText = "Ad completed! Unlocking your file...";
+        completeUnlock();
+      }).catch(() => {
+        btn.disabled = false;
+        status.innerText = "Ad skipped or unavailable right now. Tap again or use Web Verify below.";
+      });
+    }
+  </script>
+</body>
+</html>
